@@ -20,13 +20,12 @@ about movies, interact with others' opinions, make recommendations, and find ins
 
 ### Features
 
-- User login / authentification / account creation
-- Media feed comprised of movie reviews shared by other users they follow
+- User login / authentication / account creation
+- Media feed comprised of movie reviews
 - Ability to comment on and like other users' posts
 - Post / Review creation and sharing
-- Profile customization (avatar, bio, username, favorite movies, etc.)
-- Access to movie details pages through search (with filtering options)
-- Access to other user profiles through search (with filtering options)
+- Access to movie details pages through search
+- Access to other user profiles through search
 - Ability to give a movie a rating without creating a post
 - Ability to recommend a movie to another user directly (messaging functionality) (nice to have)
 
@@ -93,8 +92,8 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - id (PK) (increments, primary)
 - movie_name (string, not-nullable)
 - tmdb_id (integer, unsigned, not-nullable)
-- rating (number)
-- trailer_url? (YouTube API?) (nice to have)
+- poster_url (string, url)
+- release_date (string, not-nullable)
 - created_at (timestamp, default)
 - updated_at (timestamp, default)
 
@@ -103,10 +102,8 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - id (PK) (increments, primary)
 - user_id (FK) (integer, unsigned, not-nullable, references)
 - movie_id (FK) (integer, unsigned, not-nullable, references)
-- poster_url (string/url)
 - caption (string, character limit)
 - rating (enum, not-nullable)
-- where_to_stream (check API documentation?) (nice to have?)
 - is_post (enum, not-nullable)
 - created_at (timestamp, default)
 - updated_at (timestamp, default)
@@ -164,18 +161,20 @@ about movies, interact with others' opinions, make recommendations, and find ins
 ### Endpoints
 
 - GET /api/users
+- POST /api/users/login
+- POST /api/users/register
+- POST /api/users/logout
 - GET /api/users/:userId
 - GET /api/users/:userId/followers
 - GET /api/users/:userId/following
 - GET /api/users/:userId/posts
 - GET /api/followers
 - GET /api/following
-- POST /api/following/:followeeId
-- DELETE /api/following/:followeeId
+- POST /api/following
+- DELETE /api/following/:followId
 - GET /api/movies
 - POST /api/movies
 - GET /api/movies/:movieId
-- PATCH /api/movies/:movieId
 - GET /api/movies/:movieId/posts
 - GET /api/posts
 - POST /api/posts
@@ -184,13 +183,10 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - POST /api/posts/:postId/likes
 - GET /api/posts/:postId/comments
 - POST /api/posts/:postId/comments
-- POST /api/register
-- POST /api/login
-- POST /api/logout
 
 ### Auth
 
-The application will integrate login and user profile functionality, using authorization.
+The application will integrate login and user profile functionality, using auth.
 
 ## Roadmap
 
