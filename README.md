@@ -58,6 +58,20 @@ about movies, interact with others' opinions, make recommendations, and find ins
 
 ### Mockups
 
+![IMG_1281](https://github.com/ollielaw/moviegram-server/assets/66389067/27b5d3bb-1d05-49d7-90dd-3da923c60cf5)
+
+![IMG_1282](https://github.com/ollielaw/moviegram-server/assets/66389067/033c6776-2e30-4dc1-8219-f1faebb752b5)
+
+![IMG_1283](https://github.com/ollielaw/moviegram-server/assets/66389067/ad2f36e9-fd78-4cc0-9b1b-cd217dadf23c)
+
+![IMG_1284](https://github.com/ollielaw/moviegram-server/assets/66389067/03835c8b-819b-41b1-8e9d-57fd0bfa0885)
+
+![IMG_1285](https://github.com/ollielaw/moviegram-server/assets/66389067/751e3d79-79ee-489d-8ad9-3a989a3bf59b)
+
+![IMG_1286](https://github.com/ollielaw/moviegram-server/assets/66389067/05a71108-1b84-43b9-8a40-5cfc4cb2b057)
+
+![IMG_1287](https://github.com/ollielaw/moviegram-server/assets/66389067/a6793f41-75ae-456a-a118-031926deec14)
+
 ### Data
 
 #### MySQL Database Tables:
