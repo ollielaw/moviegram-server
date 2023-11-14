@@ -194,7 +194,18 @@ The application will integrate login and user profile functionality, using autho
 
 ## Roadmap
 
-1.
+1. Design and build out API paths and responses utilizing separate routing files
+2. Use static mock data to test the endpoint responses
+3. Build migration and seeding files to initialize database, and controller files to handle querying
+4. Implement services to handle syncing external API data responses with database data
+5. Test API endpoints in Postman
+6. Mockup the JSX for each page and break code down into reusable components
+7. Build out data flow and state architecture for the front end
+8. Implement handlers and hooks to connect the front end to the back end via the defined API endpoints
+9. Implement full styling of the web application pages
+10. Integrate authentification on the front and back end and refactor code as necessary
+11. Perform thorough testing and optimize code efficiency
+12. Consider implementing nice-to-haves or deploying the application
 
 ## Nice-to-haves / Next Steps
 
