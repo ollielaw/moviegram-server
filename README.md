@@ -160,23 +160,25 @@ about movies, interact with others' opinions, make recommendations, and find ins
 
 ### Endpoints
 
-- GET /api/users
-- POST /api/users/login
-- POST /api/users/register
-- POST /api/users/logout
-- GET /api/users/:userId
-- GET /api/users/:userId/followers
-- GET /api/users/:userId/following
-- GET /api/users/:userId/posts
-- GET /api/followers
-- GET /api/following
-- POST /api/following
-- DELETE /api/following/:followId
+- POST /api/login
+- POST /api/register
+- GET /api/user
+- GET /api/user/posts
+- GET /api/user/feed
+- GET /api/user/followers
+- GET /api/user/following
+- POST /api/user/following
+- DELETE /api/user/following/:followId
+- POST /api/user/logout
+- GET /api/profiles
+- GET /api/profiles/:userId
+- GET /api/profiles/:userId/posts
+- GET /api/profiles/:userId/followers
+- GET /api/profiles/:userId/following
 - GET /api/movies
 - POST /api/movies
 - GET /api/movies/:movieId
 - GET /api/movies/:movieId/posts
-- GET /api/posts
 - POST /api/posts
 - GET /api/posts/:postId
 - PATCH /api/posts/:postId
