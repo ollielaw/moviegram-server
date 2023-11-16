@@ -42,6 +42,9 @@ const index = async (req, res) => {
       }
     );
     const movieList = data.results;
+    if (movieList.length === 0) {
+      return res.status(200).json(data);
+    }
     const movies = [];
     for (let i = 0; i < movieList.length; i++) {
       const rating = await findUserRating(id, movieList[i].id);
@@ -51,7 +54,7 @@ const index = async (req, res) => {
     data.results = movies;
     return res.status(200).json(data);
   } catch (error) {
-    res
+    return res
       .send(500)
       .json({ message: `Error retreiving movie search list: ${error}` });
   }

@@ -180,10 +180,12 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - GET /api/movies/:movieId/posts
 - POST /api/posts
 - GET /api/posts/:postId
-- PATCH /api/posts/:postId
-- POST /api/posts/:postId/likes
+- PATCH /api/posts/:movieId
+- POST /api/posts/:postId/like
+- DELETE /api/posts/:postId/like
 - GET /api/posts/:postId/comments
 - POST /api/posts/:postId/comments
+- DELETE /api/posts/:postId/comments/:commentId
 
 ### Auth
 
