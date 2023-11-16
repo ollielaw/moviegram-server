@@ -50,8 +50,8 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - Movie Profile Page
 - Search Page
 - Media Feed Page
-- Contacts / Followers / Following Page
 - Post Creation Page
+- Contacts / Followers / Following Page (nice to have)
 - Explore / Recommendations Page (nice to have)
 - Chat / Messenger Page (nice to have)
 
@@ -125,7 +125,7 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - created_at (timestamp, default)
 - updated_at (timestamp, default)
 
-##### Follows
+##### Follows (nice to have)
 
 - id (PK) (increments, primary)
 - follower_id (FK) (integer, unsigned, not-nullable, references)
@@ -165,16 +165,16 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - GET /api/user
 - GET /api/user/posts
 - GET /api/user/feed
-- GET /api/user/followers
-- GET /api/user/following
-- POST /api/user/following
-- DELETE /api/user/following/:followId
+- GET /api/user/followers (nice to have)
+- GET /api/user/following (nice to have)
+- POST /api/user/following (nice to have)
+- DELETE /api/user/following/:followId (nice to have)
 - POST /api/user/logout
 - GET /api/profiles
 - GET /api/profiles/:userId
 - GET /api/profiles/:userId/posts
-- GET /api/profiles/:userId/followers
-- GET /api/profiles/:userId/following
+- GET /api/profiles/:userId/followers (nice to have)
+- GET /api/profiles/:userId/following (nice to have)
 - GET /api/movies
 - GET /api/movies/:movieId
 - GET /api/movies/:movieId/posts
@@ -208,6 +208,7 @@ The application will integrate login and user profile functionality, using auth.
 
 ## Nice-to-haves / Next Steps
 
+- Follow relationships (feed comprised only of posts from followed users)
 - Movie trailer playback (utilizing the YouTube API)
 - Direct messaging for chat and sharing functionality (potentially utilizing socket.io)
 - Explore / Recommedations Page (feed of algorithmically recommended movies, based on users past movie ratings / reviews)

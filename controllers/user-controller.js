@@ -5,8 +5,7 @@ const index = async (req, res) => {
   try {
     const user = await knex("users").where({ id: id }).first();
     delete user.password;
-    delete user.updated_at;
-    res.status(200).json(user);
+    return res.status(200).json(user);
   } catch (error) {
     return res.status(500).json({
       message: `Unable to fetch current user with ID ${id}`,

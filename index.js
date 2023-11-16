@@ -8,6 +8,7 @@ require("dotenv").config();
 const userRoutes = require("./routes/user-routes");
 const movieRoutes = require("./routes/movie-routes");
 const postRoutes = require("./routes/post-routes");
+const profileRoutes = require("./routes/profile-routes");
 
 const app = express();
 
@@ -99,6 +100,7 @@ app.post("/api/login", async (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/movies", movieRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/profiles", profileRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
