@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 const userRoutes = require("./routes/user-routes");
+const movieRoutes = require("./routes/movie-routes");
 
 const app = express();
 
@@ -95,6 +96,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/movies", movieRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);

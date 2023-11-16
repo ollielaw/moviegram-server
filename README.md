@@ -176,7 +176,6 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - GET /api/profiles/:userId/followers
 - GET /api/profiles/:userId/following
 - GET /api/movies
-- POST /api/movies
 - GET /api/movies/:movieId
 - GET /api/movies/:movieId/posts
 - POST /api/posts
