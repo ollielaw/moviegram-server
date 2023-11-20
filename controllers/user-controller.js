@@ -32,7 +32,9 @@ const fetchProfilePosts = async (req, res) => {
   }
 };
 
-const fetchFeed = async (_req, res) => {
+const fetchFeed = async (req, res) => {
+  const { p } = req.query;
+  const page = p ? p : 1;
   try {
     const feed = await knex
       .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
@@ -42,7 +44,9 @@ const fetchFeed = async (_req, res) => {
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
       .groupBy("p.id")
       .where("p.is_post", 1)
-      .orderBy("p.id", "desc");
+      .orderBy("p.id", "desc")
+      .limit(20)
+      .offset((page - 1) * 20);
     return res.status(200).json(feed);
   } catch (error) {
     return res.status(500).send(`Error retreiving user's feed: ${error}`);
