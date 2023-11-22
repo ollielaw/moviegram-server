@@ -4,11 +4,12 @@ module.exports = [
   {
     id: 1,
     name: "Ollie Law",
-    username: "ollie_law",
+    username: "ollie_law4",
     email: "ollielaw@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "Action Movie Enthusiast",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/ollie_law4?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ module.exports = [
     email: "johnsmith@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/johnnysmith4?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
   {
     id: 3,
@@ -26,7 +28,8 @@ module.exports = [
     email: "harryrobinson@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/harryrobo01?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
   {
     id: 4,
@@ -35,7 +38,8 @@ module.exports = [
     email: "sharonng@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/sharon_ng?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
   {
     id: 5,
@@ -44,7 +48,8 @@ module.exports = [
     email: "alanathomas@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/alana3?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
   {
     id: 6,
@@ -53,6 +58,7 @@ module.exports = [
     email: "vanessamendoza@moviegram.com",
     password: bcrypt.hashSync("password123"),
     bio: "",
-    avatar_url: "",
+    avatar_url:
+      "https://source.boringavatars.com/beam/40/vmendoza?colors=323232,0095ff,afafaf,0065ad,e1e1e1",
   },
 ];

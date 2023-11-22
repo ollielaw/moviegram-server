@@ -51,7 +51,7 @@ function getToken(req) {
 }
 
 app.post("/api/register", async (req, res) => {
-  const { name, username, email, password, bio, avatar_url } = req.body;
+  const { name, username, email, password, bio } = req.body;
   if (!(name && email && username && password)) {
     return res.status(400).send("Please enter all required fields");
   }
@@ -62,7 +62,7 @@ app.post("/api/register", async (req, res) => {
     username,
     email,
     bio,
-    avatar_url,
+    avatar_url: `https://source.boringavatars.com/beam/40/${username}?colors=323232,0095ff,afafaf,0065ad,e1e1e1`,
     password: hashedPassword,
   };
   try {

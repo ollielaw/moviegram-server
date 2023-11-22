@@ -61,10 +61,18 @@ const findOne = async (req, res) => {
   const { postId } = req.params;
   try {
     const post = await knex
-      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
+      .select(
+        "p.*",
+        "m.movie_name",
+        "m.tmdb_id",
+        "m.poster_url",
+        "u.username",
+        "u.avatar_url"
+      )
       .count({ num_likes: "l.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
       .groupBy("p.id")
       .where("p.id", postId)
@@ -182,9 +190,12 @@ const fetchComments = async (req, res) => {
         message: `Post with ID ${postId} not found`,
       });
     }
-    const comments = await knex("comments")
-      .where({ post_id: postId })
-      .orderBy("id", "desc");
+    const comments = await knex
+      .select("c.*", "u.username", "u.avatar_url")
+      .from({ c: "comments" })
+      .join({ u: "users" }, "c.user_id", "=", "u.id")
+      .where("c.post_id", postId)
+      .orderBy("c.id", "desc");
     return res.status(200).json(comments);
   } catch (error) {
     return res.status(500).json({

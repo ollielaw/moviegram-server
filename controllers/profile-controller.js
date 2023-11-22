@@ -14,8 +14,8 @@ const index = async (req, res) => {
     } else {
       const data = await knex("users")
         .select("id", "name", "username", "email", "bio", "avatar_url")
-        .whereILike("name", `${s}%`)
-        .orWhereILike("username", `${s}%`)
+        .whereILike("name", `%${s}%`)
+        .orWhereILike("username", `%${s}%`)
         .orderBy("name", "desc")
         .limit(20)
         .offset((page - 1) * 20);
@@ -51,10 +51,18 @@ const fetchProfilePosts = async (req, res) => {
   const { userId } = req.params;
   try {
     const posts = await knex
-      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
+      .select(
+        "p.*",
+        "m.movie_name",
+        "m.tmdb_id",
+        "m.poster_url",
+        "u.username",
+        "u.avatar_url"
+      )
       .count({ num_likes: "l.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
       .groupBy("p.id")
       .where("p.user_id", userId)
