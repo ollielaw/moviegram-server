@@ -28,11 +28,29 @@ const findAvgRating = async (movieId) => {
 const index = async (req, res) => {
   const { s, p } = req.query;
   const { id } = req.decoded;
-  if (!s) {
-    return res.status(400);
-  }
   const page = p ? p : 1;
   try {
+    if (!s) {
+      const { data } = await axios.get(
+        `${process.env.TMDB_API_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const movieList = data.results;
+      if (!movieList.length) {
+        return res.status(200).json([]);
+      }
+      const movies = [];
+      for (let i = 0; i < movieList.length; i++) {
+        const rating = await findUserRating(id, movieList[i].id);
+        const avg_rating = await findAvgRating(movieList[i].id);
+        movies.push({ ...movieList[i], rating, avg_rating });
+      }
+      return res.status(200).json(movies);
+    }
     const { data } = await axios.get(
       `${process.env.TMDB_API_URL}/search/movie?query=${s}&include_adult=false&language=en-US&page=${page}`,
       {
@@ -42,8 +60,8 @@ const index = async (req, res) => {
       }
     );
     const movieList = data.results;
-    if (movieList.length === 0) {
-      return res.status(200).json(data);
+    if (!movieList.length) {
+      return res.status(200).json([]);
     }
     const movies = [];
     for (let i = 0; i < movieList.length; i++) {
@@ -51,8 +69,7 @@ const index = async (req, res) => {
       const avg_rating = await findAvgRating(movieList[i].id);
       movies.push({ ...movieList[i], rating, avg_rating });
     }
-    data.results = movies;
-    return res.status(200).json(data);
+    return res.status(200).json(movies);
   } catch (error) {
     return res
       .send(500)
@@ -84,14 +101,29 @@ const findOne = async (req, res) => {
 };
 
 const fetchPosts = async (req, res) => {
+  const { id } = req.decoded;
   const { movieId } = req.params;
   try {
     const posts = await knex
-      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
-      .count({ num_likes: "l.id" })
+      .select(
+        "p.*",
+        "m.movie_name",
+        "m.tmdb_id",
+        "m.poster_url",
+        "u.username",
+        "u.avatar_url"
+      )
+      .count({ num_likes: "l.id", user_liked: "lu.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
+      .leftJoin(
+        knex("likes").where("user_id", id).as("lu"),
+        "p.id",
+        "=",
+        "lu.post_id"
+      )
       .groupBy("p.id")
       .where("m.tmdb_id", movieId)
       .andWhere("p.is_post", 1)

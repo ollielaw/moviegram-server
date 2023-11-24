@@ -3,7 +3,14 @@ const knex = require("knex")(require("../knexfile"));
 const index = async (req, res) => {
   const { id } = req.decoded;
   try {
-    const user = await knex("users").where({ id: id }).first();
+    const user = await knex
+      .select("u.*")
+      .sum({ num_posts: "p.is_post" })
+      .from({ u: "users" })
+      .leftJoin({ p: "posts" }, "u.id", "=", "p.user_id")
+      .where("u.id", id)
+      .groupBy("u.id")
+      .first();
     delete user.password;
     return res.status(200).json(user);
   } catch (error) {
@@ -25,11 +32,17 @@ const fetchProfilePosts = async (req, res) => {
         "u.username",
         "u.avatar_url"
       )
-      .count({ num_likes: "l.id" })
+      .count({ num_likes: "l.id", user_liked: "lu.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
       .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
+      .leftJoin(
+        knex("likes").where("user_id", id).as("lu"),
+        "p.id",
+        "=",
+        "lu.post_id"
+      )
       .groupBy("p.id")
       .where("p.user_id", id)
       .andWhere("p.is_post", 1)
@@ -42,7 +55,8 @@ const fetchProfilePosts = async (req, res) => {
 
 const fetchFeed = async (req, res) => {
   const { p } = req.query;
-  const page = p ? p : 1;
+  const { id } = req.decoded;
+  const page = p ? p - 1 : 0;
   try {
     const feed = await knex
       .select(
@@ -53,16 +67,22 @@ const fetchFeed = async (req, res) => {
         "u.username",
         "u.avatar_url"
       )
-      .count({ num_likes: "l.id" })
+      .count({ num_likes: "l.id", user_liked: "lu.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
       .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
+      .leftJoin(
+        knex("likes").where("user_id", id).as("lu"),
+        "p.id",
+        "=",
+        "lu.post_id"
+      )
       .groupBy("p.id")
       .where("p.is_post", 1)
       .orderBy("p.id", "desc")
       .limit(5)
-      .offset((page - 1) * 5);
+      .offset(page * 5);
     return res.status(200).json(feed);
   } catch (error) {
     return res.status(500).send(`Error retreiving user's feed: ${error}`);

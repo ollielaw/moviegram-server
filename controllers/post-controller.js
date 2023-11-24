@@ -58,6 +58,7 @@ const add = async (req, res) => {
 };
 
 const findOne = async (req, res) => {
+  const { id } = req.decoded;
   const { postId } = req.params;
   try {
     const post = await knex
@@ -69,11 +70,17 @@ const findOne = async (req, res) => {
         "u.username",
         "u.avatar_url"
       )
-      .count({ num_likes: "l.id" })
+      .count({ num_likes: "l.id", user_liked: "lu.id" })
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
       .join({ u: "users" }, "p.user_id", "=", "u.id")
       .leftJoin({ l: "likes" }, "p.id", "=", "l.post_id")
+      .leftJoin(
+        knex("likes").where("user_id", id).as("lu"),
+        "p.id",
+        "=",
+        "lu.post_id"
+      )
       .groupBy("p.id")
       .where("p.id", postId)
       .andWhere("p.is_post", 1)
@@ -106,9 +113,9 @@ const update = async (req, res) => {
     const updatedRev = {
       user_id: id,
       movie_id: prevPost.movie_id,
-      caption,
-      rating,
-      is_post,
+      caption: caption ? caption : prevPost.caption,
+      rating: rating ? rating : prevPost.rating,
+      is_post: is_post ? is_post : prevPost.is_post,
     };
     const rowsUpdated = await knex("posts")
       .where({ id: prevPost.id })
@@ -118,8 +125,8 @@ const update = async (req, res) => {
         message: `Post with ID ${prevPost.id} not found`,
       });
     }
-    const updatedPost = await knex("posts").where({ id: prevPost.id });
-    res.status(200).json(updatedPost[0]);
+    const updatedPost = await knex("posts").where({ id: prevPost.id }).first();
+    res.status(200).json(updatedPost);
   } catch (error) {
     res.status(500).json({
       message: `Error updating post: ${error}`,
