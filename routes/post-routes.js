@@ -4,7 +4,10 @@ const router = express.Router();
 const postController = require("../controllers/post-controller");
 
 router.route("/").post(postController.add);
-router.route("/:postId").get(postController.findOne);
+router
+  .route("/:postId")
+  .get(postController.findOne)
+  .delete(postController.remove);
 router.route("/:movieId").patch(postController.update);
 router
   .route("/:postId/like")
@@ -13,7 +16,9 @@ router
 router
   .route("/:postId/comments")
   .get(postController.fetchComments)
-  .post(postController.addComment)
+  .post(postController.addComment);
+router
+  .route("/:postId/comments/:commentId")
   .delete(postController.removeComment);
 
 module.exports = router;

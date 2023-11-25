@@ -188,6 +188,29 @@ const removeLike = async (req, res) => {
   }
 };
 
+const remove = async (req, res) => {
+  const { id } = req.decoded;
+  const { postId } = req.params;
+  try {
+    const rowsDeleted = await knex("posts")
+      .where({ id: postId })
+      .andWhere({ user_id: id })
+      .delete();
+    if (!rowsDeleted) {
+      return res.status(404).json({
+        message: `Post with ID ${postId} by user with ID ${id} not found`,
+      });
+    }
+    return res.status(204).json({
+      message: `Successfully deleted post with ID ${postId}`,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `Unable to delete post: ${error}`,
+    });
+  }
+};
+
 const fetchComments = async (req, res) => {
   const { postId } = req.params;
   try {
@@ -266,6 +289,7 @@ module.exports = {
   findOne,
   add,
   update,
+  remove,
   addLike,
   removeLike,
   fetchComments,
