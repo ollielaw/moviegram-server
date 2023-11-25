@@ -53,9 +53,28 @@ function getToken(req) {
 app.post("/api/register", async (req, res) => {
   const { name, username, email, password, bio } = req.body;
   if (!(name && email && username && password)) {
-    return res.status(400).send("Please enter all required fields");
+    return res
+      .status(400)
+      .json({ message: "Please enter all required fields" });
   }
+
   const hashedPassword = bcrypt.hashSync(password);
+
+  const usernamesFound = await knex("users").where({ username });
+
+  if (usernamesFound.length) {
+    return res.status(400).json({ message: "Username taken." });
+  }
+
+  const emailsFound = await knex("users").where({ email });
+
+  if (emailsFound.length) {
+    return res
+      .status(400)
+      .json({
+        message: `An account with email address ${email} already exists.`,
+      });
+  }
 
   const newUser = {
     name,
@@ -67,34 +86,42 @@ app.post("/api/register", async (req, res) => {
   };
   try {
     await knex("users").insert(newUser);
-    res.status(201).send("Registration successful");
+    res.status(201).json({ message: "Registration successful." });
   } catch (error) {
-    res.status(400).send("Registration failed");
+    res.status(500).json({ message: "Registration failed." });
   }
 });
 
 app.post("/api/login", async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).send("Please enter all required fields");
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Please enter all required fields" });
+    }
+
+    const user = await knex("users").where({ email: email }).first();
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "User with that email address does not exist." });
+    }
+
+    const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ message: "Incorrect password." });
+    }
+
+    const token = jwt.sign({ id: user.id }, SECRET_KEY);
+
+    return res.status(200).json({ token });
+  } catch (error) {
+    return res.status(500).json({ message: "Login failed." });
   }
-
-  const user = await knex("users").where({ email: email }).first();
-
-  if (!user) {
-    return res.status(400).send("User with that email address does not exist");
-  }
-
-  const isPasswordCorrect = bcrypt.compareSync(password, user.password);
-
-  if (!isPasswordCorrect) {
-    return res.status(400).send("Incorrect password");
-  }
-
-  const token = jwt.sign({ id: user.id }, SECRET_KEY);
-
-  res.json({ token });
 });
 
 app.use("/api/user", userRoutes);
