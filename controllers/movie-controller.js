@@ -13,7 +13,7 @@ const findUserRating = async (userId, movieId) => {
   return isRating ? isRating.rating : null;
 };
 
-const findAvgRating = async (movieId) => {
+const findAvgRating = async (movieId, defaultRating) => {
   const isAvgRating = await knex
     .select("m.tmdb_id")
     .avg({ avg_rating: "p.rating" })
@@ -22,7 +22,24 @@ const findAvgRating = async (movieId) => {
     .groupBy("m.tmdb_id")
     .where({ tmdb_id: movieId })
     .first();
-  return isAvgRating ? isAvgRating.avg_rating : null;
+  return isAvgRating ? isAvgRating.avg_rating : defaultRating;
+};
+
+const findNumPosts = async (movieId) => {
+  const movie = await knex
+    .select("m.tmdb_id")
+    .count({ num_posts: "p.id" })
+    .from({ m: "movies" })
+    .leftJoin(
+      knex("posts").where({ is_post: 1 }).as("p"),
+      "m.id",
+      "=",
+      "p.movie_id"
+    )
+    .where("m.tmdb_id", movieId)
+    .groupBy("m.tmdb_id")
+    .first();
+  return movie ? movie.num_posts : 0;
 };
 
 const index = async (req, res) => {
@@ -46,7 +63,10 @@ const index = async (req, res) => {
       const movies = [];
       for (let i = 0; i < movieList.length; i++) {
         const rating = await findUserRating(id, movieList[i].id);
-        const avg_rating = await findAvgRating(movieList[i].id);
+        const avg_rating = await findAvgRating(
+          movieList[i].id,
+          movieList[i].vote_average
+        );
         movies.push({ ...movieList[i], rating, avg_rating });
       }
       return res.status(200).json(movies);
@@ -66,7 +86,10 @@ const index = async (req, res) => {
     const movies = [];
     for (let i = 0; i < movieList.length; i++) {
       const rating = await findUserRating(id, movieList[i].id);
-      const avg_rating = await findAvgRating(movieList[i].id);
+      const avg_rating = await findAvgRating(
+        movieList[i].id,
+        movieList[i].vote_average
+      );
       movies.push({ ...movieList[i], rating, avg_rating });
     }
     return res.status(200).json(movies);
@@ -82,7 +105,7 @@ const findOne = async (req, res) => {
   const { id } = req.decoded;
   try {
     const { data } = await axios.get(
-      `${process.env.TMDB_API_URL}/movie/${movieId}?language=en-US`,
+      `${process.env.TMDB_API_URL}/movie/${movieId}?append_to_response=credits%2Cvideos&language=en-US`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
@@ -90,8 +113,9 @@ const findOne = async (req, res) => {
       }
     );
     const rating = await findUserRating(id, movieId);
-    const avg_rating = await findAvgRating(movieId);
-    const movieData = { ...data, avg_rating, rating };
+    const avg_rating = await findAvgRating(movieId, data.vote_average);
+    const num_posts = await findNumPosts(movieId);
+    const movieData = { ...data, avg_rating, rating, num_posts };
     return res.status(200).json(movieData);
   } catch (error) {
     return res.status(500).json({
