@@ -89,8 +89,28 @@ const fetchFeed = async (req, res) => {
   }
 };
 
+const findOnePost = async (req, res) => {
+  const { id } = req.decoded;
+  const { movieId } = req.params;
+  try {
+    const post = await knex
+      .select("p.*", "m.*")
+      .from({ p: "posts" })
+      .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .where("m.tmdb_id", movieId)
+      .andWhere("p.user_id", id)
+      .first();
+    return res.status(200).json(post);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error retrieving user's post for movie ${movieId}: ${error}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   fetchProfilePosts,
   fetchFeed,
+  findOnePost,
 };

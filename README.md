@@ -164,6 +164,7 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - POST /api/register
 - GET /api/user
 - GET /api/user/posts
+- GET /api/user/posts/:movieId
 - GET /api/user/feed
 - GET /api/user/followers (nice to have)
 - GET /api/user/following (nice to have)
