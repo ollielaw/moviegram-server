@@ -24,8 +24,7 @@ const index = async (req, res) => {
         .sum({ num_posts: "p.is_post" })
         .from({ u: "users" })
         .leftJoin({ p: "posts" }, "u.id", "=", "p.user_id")
-        .where("p.is_post", 1)
-        .andWhereNot("u.id", id)
+        .whereNot("u.id", id)
         .andWhere(function () {
           this.whereILike("u.name", `%${s}%`).orWhereILike(
             "u.username",
@@ -106,8 +105,42 @@ const fetchProfilePosts = async (req, res) => {
   }
 };
 
+const fetchFavorites = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const usersFound = await knex("users").where({ id: userId });
+    if (!usersFound.length) {
+      return res.status(404).json({
+        message: `User with ID ${userId} does not exist`,
+      });
+    }
+    const favs = await knex
+      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
+      .from({ p: "posts" })
+      .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .rightJoin(
+        knex("users").where({ id: userId }).as("u"),
+        "p.user_id",
+        "=",
+        "u.id"
+      )
+      .where("p.rating", ">=", 8)
+      .orderBy([
+        { column: "p.rating", order: "desc" },
+        { column: "p.id", order: "desc" },
+      ])
+      .limit(10);
+    return res.status(200).json(favs);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error retrieving favorite movies for user with ID ${userId}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   findOne,
   fetchProfilePosts,
+  fetchFavorites,
 };

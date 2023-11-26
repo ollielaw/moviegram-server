@@ -27,4 +27,30 @@ module.exports = [
     content:
       "The film's exploration of ambition and sacrifice is indeed compelling, but the intense and abusive nature of Simmons' character diminishes the nuance. A more balanced portrayal of mentorship could have elevated the film, allowing for a more nuanced discussion about the pursuit of artistic perfection.",
   },
+  {
+    id: 5,
+    user_id: 1,
+    post_id: 1,
+    content: "Great family movie!",
+  },
+  {
+    id: 6,
+    user_id: 2,
+    post_id: 23,
+    content: "Best movie I've seen this year!",
+  },
+  {
+    id: 7,
+    user_id: 2,
+    post_id: 4,
+    content:
+      "A Robin Williams classic. Also, incredible to think how young Matt Damon and Ben Affleck were when they wrote this.",
+  },
+  {
+    id: 8,
+    user_id: 4,
+    post_id: 100,
+    content:
+      "Personally, I really enjoyed this movie. I agree that Jesse Eisenberg carried many of the scenes though",
+  },
 ];

@@ -28,8 +28,12 @@ const fetchFavorites = async (req, res) => {
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
       .rightJoin(knex("users").where({ id }).as("u"), "p.user_id", "=", "u.id")
-      .orderBy("p.rating", "desc")
-      .limit(5);
+      .where("p.rating", ">=", 8)
+      .orderBy([
+        { column: "p.rating", order: "desc" },
+        { column: "p.id", order: "desc" },
+      ])
+      .limit(10);
     return res.status(200).json(favs);
   } catch (error) {
     return res.status(500).json({
