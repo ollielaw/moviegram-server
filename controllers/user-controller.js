@@ -20,6 +20,24 @@ const index = async (req, res) => {
   }
 };
 
+const fetchFavorites = async (req, res) => {
+  const { id } = req.decoded;
+  try {
+    const favs = await knex
+      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
+      .from({ p: "posts" })
+      .join({ m: "movies" }, "p.movie_id", "=", "m.id")
+      .rightJoin(knex("users").where({ id }).as("u"), "p.user_id", "=", "u.id")
+      .orderBy("p.rating", "desc")
+      .limit(5);
+    return res.status(200).json(favs);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Unable to fetch favorite movies for current user with ID ${id}`,
+    });
+  }
+};
+
 const fetchProfilePosts = async (req, res) => {
   const { id } = req.decoded;
   try {
@@ -113,4 +131,5 @@ module.exports = {
   fetchProfilePosts,
   fetchFeed,
   findOnePost,
+  fetchFavorites,
 };

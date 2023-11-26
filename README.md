@@ -165,6 +165,7 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - GET /api/user
 - GET /api/user/posts
 - GET /api/user/posts/:movieId
+- GET /api/user/favorites
 - GET /api/user/feed
 - GET /api/user/followers (nice to have)
 - GET /api/user/following (nice to have)
@@ -172,6 +173,7 @@ about movies, interact with others' opinions, make recommendations, and find ins
 - DELETE /api/user/following/:followId (nice to have)
 - GET /api/profiles
 - GET /api/profiles/:userId
+- GET /api/profiles/:userId/favorites
 - GET /api/profiles/:userId/posts
 - GET /api/profiles/:userId/followers (nice to have)
 - GET /api/profiles/:userId/following (nice to have)
