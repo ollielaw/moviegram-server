@@ -161,43 +161,8 @@ const fetchPosts = async (req, res) => {
   }
 };
 
-// REMOVE THIS FUNCTION
-const getBackdropUrl = async (tmdbId) => {
-  const { data } = await axios.get(
-    `${process.env.TMDB_API_URL}/movie/${tmdbId}?language=en-US`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
-      },
-    }
-  );
-  if (data) {
-    return data.backdrop_path;
-  }
-  return null;
-};
-
-// REMOVE THIS FUNCTION
-const fetchMovieSeed = async (_req, res) => {
-  const data = await knex("movies").select(
-    "id",
-    "movie_name",
-    "tmdb_id",
-    "poster_url",
-    "release_date"
-  );
-  const seedData = [];
-  for (let i = 0; i < data.length; i++) {
-    const backdrop_url = await getBackdropUrl(data[i].tmdb_id);
-    seedData.push({ ...data[i], backdrop_url });
-  }
-  return res.status(200).json(seedData);
-};
-
 module.exports = {
   index,
   findOne,
   fetchPosts,
-  // REMOVE THIS LINE
-  fetchMovieSeed,
 };
