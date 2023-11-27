@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userController = require("../controllers/user-controller");
 
-router.route("/").get(userController.index);
+router.route("/").get(userController.index).patch(userController.update);
 router.route("/posts").get(userController.fetchProfilePosts);
 router.route("/feed").get(userController.fetchFeed);
 router.route("/favorites").get(userController.fetchFavorites);

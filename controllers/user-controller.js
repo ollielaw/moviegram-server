@@ -138,10 +138,77 @@ const findOnePost = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  const { id } = req.decoded;
+  const { bio, password, newPassword } = req.body;
+
+  try {
+    const user = await knex("users").where({ id }).first();
+
+    if (password && newPassword) {
+      const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+
+      if (!isPasswordCorrect) {
+        return res.status(400).json({ message: "Incorrect password." });
+      }
+
+      const hashedPassword = bcrypt.hashSync(newPassword);
+
+      const uptUser = {
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        password: hashedPassword,
+        bio: user.bio,
+        avatar_url: user.avatar_url,
+      };
+
+      const rowsUpdated = await knex("users").where({ id }).update(uptUser);
+
+      if (!rowsUpdated) {
+        return res.status(404).json({
+          message: `User not found`,
+        });
+      }
+
+      const updatedUser = await knex("users").where({ id }).first();
+      delete updatedUser.password;
+      res.status(200).json(updatedUser);
+    }
+
+    if (bio !== user.bio) {
+      const uptUser = {
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        password: user.password,
+        bio: bio,
+        avatar_url: user.avatar_url,
+      };
+      const rowsUpdated = await knex("users").where({ id }).update(uptUser);
+      if (!rowsUpdated) {
+        return res.status(404).json({
+          message: `User not found`,
+        });
+      }
+      const updatedUser = await knex("users").where({ id }).first();
+      delete updatedUser.password;
+      res.status(200).json(updatedUser);
+    }
+    delete user.password;
+    res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error updating user: ${error}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   fetchProfilePosts,
   fetchFeed,
   findOnePost,
   fetchFavorites,
+  update,
 };
