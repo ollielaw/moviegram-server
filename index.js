@@ -69,11 +69,9 @@ app.post("/api/register", async (req, res) => {
   const emailsFound = await knex("users").where({ email });
 
   if (emailsFound.length) {
-    return res
-      .status(400)
-      .json({
-        message: `An account with email address ${email} already exists.`,
-      });
+    return res.status(400).json({
+      message: `An account with email address ${email} already exists.`,
+    });
   }
 
   const newUser = {
@@ -116,7 +114,9 @@ app.post("/api/login", async (req, res) => {
       return res.status(400).json({ message: "Incorrect password." });
     }
 
-    const token = jwt.sign({ id: user.id }, SECRET_KEY);
+    const token = jwt.sign({ id: user.id }, SECRET_KEY, {
+      expiresIn: "24h",
+    });
 
     return res.status(200).json({ token });
   } catch (error) {
