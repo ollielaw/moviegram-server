@@ -1,7 +1,5 @@
 # MovieGram - Server
 
-Welcome to the server side of **Foogle**! This Node.js application serves as the backend for **foogle.foo**, handling various functionalities such as web scraping, user authentication, and interaction with the database.
-
 This is the Node.js server for my full-stack web application **MovieGram**. It is responsible for
 handling CRUD interactions with the MySQL database, making external API calls to The Movie DB (which
 hosts a large amount of movie related information, images, and relevant links), and user authentication.
