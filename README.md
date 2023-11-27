@@ -1,217 +1,196 @@
-# MovieGram
+# MovieGram - Server
 
-## Overview
+Welcome to the server side of **Foogle**! This Node.js application serves as the backend for **foogle.foo**, handling various functionalities such as web scraping, user authentication, and interaction with the database.
 
-MovieGram is a social media / networking web application, in which the primary media form is movie reviews. Users, once registered, will
-have access to a feed comprised of movie reviews (poster, rating, review, comments section) from users they follow. Ultimately, the
-application will enable efficient sharing and recommendations for movies, so that users are able to make better movie-watching decisions.
+This is the Node.js server for my full-stack web application **MovieGram**. It is responsible for
+handling CRUD interactions with the MySQL database, making external API calls to The Movie DB (which
+hosts a large amount of movie related information, images, and relevant links), and user authentication.
 
-### Problem
+## Client - https://github.com/ollielaw/moviegram-client.git
 
-Given the vast array of available movies and numerous streaming options, I've found that choosing a movie to watch can be a difficult
-and time-consuming endevour. Moreover, while there are social media platforms that currently enable people to share movie recommendations
-and reviews (e.g., Instagram, TikTok, etc.), I've yet to find one that specializes in that functionality. My web application offers a
-solution to this problem through specialization: restricting media to only movie-related content.
+## Table of Contents
 
-### User Profile
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [External APIs](#external-apis)
+- [Getting Started](#getting-started)
+- [Endpoints](#endpoints)
+- [Database](#database)
 
-The user profile of this application is very broad: anyone who watches movies. The use case is to enable users to share their opinions
-about movies, interact with others' opinions, make recommendations, and find inspiration for new movies to watch.
+## Features
 
-### Features
+1. **User Authentication:**
+   User authentication is handled via jwt. Authentication is handled directly for the register and
+   login endpoints, and through middleware for every other endpoint request.
 
-- User login / authentication / account creation
-- Media feed comprised of movie reviews
-- Ability to comment on and like other users' posts
-- Post / Review creation and sharing
-- Access to movie details pages through search
-- Access to other user profiles through search
-- Ability to give a movie a rating without creating a post
-- Ability to recommend a movie to another user directly (messaging functionality) (nice to have)
+2. **CRUD:**
+   Users, once authenticated, are able to retrieve data relating to their profile, the profiles of
+   other users, posts, and movies. Users are able to create content, including posts, ratings,
+   and comments. Users can subsequently update and delete content that they have created through
+   various endpoints, as detailed below.
 
-## Implementation
+3. **Data Logic**
+   Through the relational database structure, the server handles joins, aggregations, and computations
+   efficiently, which offloads complexity on the client-side. Much of this data logic is handled via
+   Knex.js, which enables JavaScript friendly SQL querying.
 
-### Tech Stack
+4. **External Data Fetching and Syncing**
+   Requests for movie lists (through search) and movie details require external API calls. The server
+   handles these tasks via axios. Moreover, the backend handles syncing of TMDB data to the internal
+   MySQL database when users post reviews referencing an unseen movie.
 
-- React (axios, react-router-dom, jsx, sass)
-- Node (express, cors, dotenv, knex, mysql)
+## Technologies Used
+
+- Node.js
+- Express
 - MySQL
+- Knex.js
+- axios
+- JWT
+- bcrypt
+- cors
 
-### APIs
+## External APIs
 
-- The Movie Database API
-- YouTube API (nice to have)
+- The Movie DB (TMDB): movie posters, movie backdrops, movie search, and movie details (e.g., title,
+  genres, director, release date, etc.)
 
-### Sitemap
+## Getting Started
 
-- Login Page
-- Registration Page
-- User Profile Page
-- Movie Profile Page
-- Search Page
-- Media Feed Page
-- Post Creation Page
-- Contacts / Followers / Following Page (nice to have)
-- Explore / Recommendations Page (nice to have)
-- Chat / Messenger Page (nice to have)
+1. Clone the repository:
 
-### Mockups
+```bash
+git clone https://github.com/ollielaw/moviegram-server.git
+```
 
-![IMG_1281](https://github.com/ollielaw/moviegram-server/assets/66389067/27b5d3bb-1d05-49d7-90dd-3da923c60cf5)
+2. Install dependencies:
 
-![IMG_1282](https://github.com/ollielaw/moviegram-server/assets/66389067/033c6776-2e30-4dc1-8219-f1faebb752b5)
+```bash
+npm i
+```
 
-![IMG_1283](https://github.com/ollielaw/moviegram-server/assets/66389067/ad2f36e9-fd78-4cc0-9b1b-cd217dadf23c)
+3. Set up your (MySQL) database, server, client, and TMDB API configurations in a `.env` file:
 
-![IMG_1284](https://github.com/ollielaw/moviegram-server/assets/66389067/03835c8b-819b-41b1-8e9d-57fd0bfa0885)
+- PORT = ???
+- DB_HOST = ???
+- DB_NAME = ???
+- DB_USER = ???
+- DB_PASSWORD = ???
+- CORS_ORIGIN = ???
+- JWT_SECRET_KEY = ??? (choose a password of 32 or more characters)
+- TMDB_API_URL = https://api.themoviedb.org/3
+- TMDB_BEARER_TOKEN = ??? (register a free account: https://www.themoviedb.org/signup)
 
-![IMG_1285](https://github.com/ollielaw/moviegram-server/assets/66389067/751e3d79-79ee-489d-8ad9-3a989a3bf59b)
+4. Create database:
 
-![IMG_1286](https://github.com/ollielaw/moviegram-server/assets/66389067/05a71108-1b84-43b9-8a40-5cfc4cb2b057)
+- Create MySQL database with name the same as that specified in `.env` file
 
-![IMG_1287](https://github.com/ollielaw/moviegram-server/assets/66389067/a6793f41-75ae-456a-a118-031926deec14)
+5. Run migrations:
 
-### Data
+```bash
+npm run migrate
+```
 
-#### MySQL Database Tables:
+6. Run seeding:
 
-##### Users
+```bash
+npm run seed
+```
 
-- id (PK) (increments, primary)
-- username / handle (string, not-nullable, unique?)
-- display_name (string, not-nullable)
-- email (string, not-nullable)
-- password (string, not-nullable, encrypted?)
-- profile_pic / avatar (string/url)
-- bio (string, character limit)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+7. Run the server:
 
-##### Movies
+```bash
+npm start
+```
 
-- id (PK) (increments, primary)
-- movie_name (string, not-nullable)
-- tmdb_id (integer, unsigned, not-nullable)
-- poster_url (string, url)
-- release_date (string, not-nullable)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+## Endpoints
 
-##### Posts / Reviews
+- **POST /api/register** Register a new account
+- **POST /api/login** Login to existing account (returns JWT Bearer token, which must be passed in
+  all subsequent request headers)
+- **GET /api/user** Fetch information of current (logged in) user
+- **GET /api/user/posts** Fetch all movie reviews authored by current user
+- **GET /api/user/posts/:movieId** Fetch review of movie for a given TMDB movie ID, if it exists
+- **GET /api/user/favorites** Fetch up to 10 movies with the highest ratings by current user
+- **GET /api/user/feed?p=???|1** Fetch 5 movie reviews (i.e., 1 page) to populate user's feed (p in
+  [1, 2, 3, ...]), also includes whether or not the current user has liked the review
+- **GET /api/profiles?p=???|1&s=???** Search for other users (paginated in 20s) (s is an optional
+  search query, which matches in name and username)
+- **GET /api/profiles/:userId** Fetch profile information for a specified user
+- **GET /api/profiles/:userId/favorites** Same as current user route but for other users' favorites
+- **GET /api/profiles/:userId/posts** Fetch all movie reviews authored by specified user
+- **GET /api/movies?s=???&p=???|1** Search for movies (paginates in 20s) (default query returns most
+  popular movies -- according to TMDB): returns basic information, image paths, average rating across
+  user ratings, and the current user's rating (if it exists)
+- **GET /api/movies/:movieId** Retrieve detailed information a movie specified by TMDB movie ID:
+  includes cast and crew information, as well as video paths/links
+- **GET /api/movies/:movieId/posts** Fetch all posts referencing the movie specified by TMDB movie ID
+- **POST /api/posts** Post a new movie review (is_post=1) to be shared, or quick rating (is_post=0),
+  adds movie to movies database if not already there
+- **GET /api/posts/:postId** Fetch one movie review by ID
+- **DELETE /api/posts/:postId** Deletes post with specified ID, if it was authored by current user
+- **PATCH /api/posts/:movieId** Updates a movie review or quick rating for movie specified by TMDB
+  ID (and authored by current user)
+- **POST /api/posts/:postId/like** Adds a like, by current user, to review specified by ID (if they
+  haven't already liked the review)
+- **DELETE /api/posts/:postId/like** Removes like, by current user, if like exists
+- **GET /api/posts/:postId/comments** Gets comments for specified review, and if the comment was
+  authored by the current user
+- **POST /api/posts/:postId/comments** Adds a new comment, by current user, to specified post
+- **DELETE /api/posts/:postId/comments/:commentId** Removes comment specified by ID, if it was
+  authored by the current user
 
-- id (PK) (increments, primary)
-- user_id (FK) (integer, unsigned, not-nullable, references)
-- movie_id (FK) (integer, unsigned, not-nullable, references)
-- caption (string, character limit)
-- rating (enum, not-nullable)
-- is_post (enum, not-nullable)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+## Database
 
-##### Comments
+### MySQL Tables
 
-- id (PK) (increments, primary)
-- content (string, character limit)
-- post_id (FK) (integer, unsigned, not-nullable, references)
-- user_id (FK) (integer, unsigned, not-nullable, references)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+#### Users
 
-##### Likes
+- id (PK)
+- name
+- username
+- email
+- password
+- bio
+- avatar_url
+- created_at
+- updated_at
 
-- id (PK) (increments, primary)
-- user_id (FK) (integer, unsigned, not-nullable, references)
-- post_id (FK) (integer, unsigned, not-nullable, references)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+#### Movies
 
-##### Follows (nice to have)
+- id (PK)
+- movie_name
+- tmdb_id
+- poster_url
+- backdrop_url
+- release_date
+- created_at
+- updated_at
 
-- id (PK) (increments, primary)
-- follower_id (FK) (integer, unsigned, not-nullable, references)
-- followee_id (FK) (integer, unsigned, not-nullable, references)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+#### Posts
 
-##### Conversations (nice to have)
+- id (PK)
+- user_id (FK)
+- movie_id (FK)
+- caption
+- rating
+- is_post
+- created_at
+- updated_at
 
-- id (PK) (increments, primary)
-- name (string, character limit?)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+#### Comments
 
-##### Messages (nice to have)
+- id (PK)
+- content
+- post_id (FK)
+- user_id (FK)
+- created_at
+- updated_at
 
-- id (PK) (increments, primary)
-- conversation_id (FK) (integer, unsigned, not-nullable, references)
-- sender_id (FK) (integer, unsigned, not-nullable, references)
-- text_content (string, character limit?)
-- movie_id (FK) (integer, unsigned, not-nullable, references)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
+#### Likes
 
-##### Conversation_members (nice to have)
-
-- id (PK) (increments, primary)
-- conversation_id (FK) (integer, unsigned, not-nullable, references)
-- user_id (FK) (integer, unsigned, not-nullable, references)
-- created_at (timestamp, default)
-- updated_at (timestamp, default)
-
-### Endpoints
-
-- POST /api/login
-- POST /api/register
-- GET /api/user
-- GET /api/user/posts
-- GET /api/user/posts/:movieId
-- GET /api/user/favorites
-- GET /api/user/feed
-- GET /api/user/followers (nice to have)
-- GET /api/user/following (nice to have)
-- POST /api/user/following (nice to have)
-- DELETE /api/user/following/:followId (nice to have)
-- GET /api/profiles
-- GET /api/profiles/:userId
-- GET /api/profiles/:userId/favorites
-- GET /api/profiles/:userId/posts
-- GET /api/profiles/:userId/followers (nice to have)
-- GET /api/profiles/:userId/following (nice to have)
-- GET /api/movies
-- GET /api/movies/:movieId
-- GET /api/movies/:movieId/posts
-- POST /api/posts
-- GET /api/posts/:postId
-- DELETE /api/posts/:postId
-- PATCH /api/posts/:movieId
-- POST /api/posts/:postId/like
-- DELETE /api/posts/:postId/like
-- GET /api/posts/:postId/comments
-- POST /api/posts/:postId/comments
-- DELETE /api/posts/:postId/comments/:commentId
-
-### Auth
-
-The application will integrate login and user profile functionality, using auth.
-
-## Roadmap
-
-1. Design and build out API paths and responses utilizing separate routing files
-2. Use static mock data to test the endpoint responses
-3. Build migration and seeding files to initialize database, and controller files to handle querying
-4. Implement services to handle syncing external API data responses with database data
-5. Test API endpoints in Postman
-6. Mockup the JSX for each page and break code down into reusable components
-7. Build out data flow and state architecture for the front end
-8. Implement handlers and hooks to connect the front end to the back end via the defined API endpoints
-9. Implement full styling of the web application pages
-10. Integrate authentification on the front and back end and refactor code as necessary
-11. Perform thorough testing and optimize code efficiency
-12. Consider implementing nice-to-haves or deploying the application
-
-## Nice-to-haves / Next Steps
-
-- Follow relationships (feed comprised only of posts from followed users)
-- Movie trailer playback (utilizing the YouTube API)
-- Direct messaging for chat and sharing functionality (potentially utilizing socket.io)
-- Explore / Recommedations Page (feed of algorithmically recommended movies, based on users past movie ratings / reviews)
+- id (PK)
+- user_id (FK)
+- post_id (FK)
+- created_at
+- updated_at
