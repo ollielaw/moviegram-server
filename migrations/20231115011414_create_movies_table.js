@@ -8,6 +8,7 @@ exports.up = function (knex) {
     table.string("movie_name").notNullable();
     table.integer("tmdb_id").unsigned().notNullable();
     table.string("poster_url").notNullable();
+    table.string("backdrop_url").notNullable();
     table.string("release_date").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table

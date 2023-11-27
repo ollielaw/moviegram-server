@@ -24,7 +24,13 @@ const fetchFavorites = async (req, res) => {
   const { id } = req.decoded;
   try {
     const favs = await knex
-      .select("p.*", "m.movie_name", "m.tmdb_id", "m.poster_url")
+      .select(
+        "p.*",
+        "m.movie_name",
+        "m.tmdb_id",
+        "m.poster_url",
+        "m.backdrop_url"
+      )
       .from({ p: "posts" })
       .join({ m: "movies" }, "p.movie_id", "=", "m.id")
       .rightJoin(knex("users").where({ id }).as("u"), "p.user_id", "=", "u.id")
@@ -51,6 +57,7 @@ const fetchProfilePosts = async (req, res) => {
         "m.movie_name",
         "m.tmdb_id",
         "m.poster_url",
+        "m.backdrop_url",
         "u.username",
         "u.avatar_url"
       )
@@ -86,6 +93,7 @@ const fetchFeed = async (req, res) => {
         "m.movie_name",
         "m.tmdb_id",
         "m.poster_url",
+        "m.backdrop_url",
         "u.username",
         "u.avatar_url"
       )

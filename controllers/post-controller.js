@@ -20,6 +20,7 @@ const add = async (req, res) => {
         movie_name: data.title,
         tmdb_id,
         poster_url: data.poster_path,
+        backdrop_url: data.backdrop_path,
         release_date: data.release_date,
       };
       const newMovieIds = await knex("movies").insert(newMovie);
@@ -67,6 +68,7 @@ const findOne = async (req, res) => {
         "m.movie_name",
         "m.tmdb_id",
         "m.poster_url",
+        "m.backdrop_url",
         "u.username",
         "u.avatar_url"
       )

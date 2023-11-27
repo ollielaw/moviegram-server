@@ -5,6 +5,7 @@ module.exports = [
     tmdb_id: 872585,
     poster_url: "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
     release_date: "2023-07-19",
+    backdrop_url: "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ module.exports = [
     tmdb_id: 507089,
     poster_url: "/A4j8S6moJS2zNtRR8oWF08gRnL5.jpg",
     release_date: "2023-10-25",
+    backdrop_url: "/t5zCBSB5xMDKcDqe91qahCOUYVV.jpg",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ module.exports = [
     tmdb_id: 609681,
     poster_url: "/Ag3D9qXjhJ2FUkrlJ0Cv1pgxqYQ.jpg",
     release_date: "2023-11-08",
+    backdrop_url: "/feSiISwgEpVzR1v3zv2n2AU4ANJ.jpg",
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ module.exports = [
     tmdb_id: 695721,
     poster_url: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
     release_date: "2023-11-15",
+    backdrop_url: "/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg",
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ module.exports = [
     tmdb_id: 980489,
     poster_url: "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg",
     release_date: "2023-08-09",
+    backdrop_url: "/r7DuyYJ0N3cD8bRKsR5Ygq2P7oa.jpg",
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ module.exports = [
     tmdb_id: 24428,
     poster_url: "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
     release_date: "2012-04-25",
+    backdrop_url: "/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ module.exports = [
     tmdb_id: 73723,
     poster_url: "/tePFnZFw5JvjwjQjaKkqDPNMLPU.jpg",
     release_date: "2012-03-01",
+    backdrop_url: "/sWulI556AJZ1DAQnxyAvnAAY6nd.jpg",
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ module.exports = [
     tmdb_id: 49051,
     poster_url: "/yHA9Fc37VmpUA5UncTxxo3rTGVA.jpg",
     release_date: "2012-12-12",
+    backdrop_url: "/xyXmtuvsoM5J3yNad0nvcetpBdY.jpg",
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ module.exports = [
     tmdb_id: 57214,
     poster_url: "/lUPDGT3lyRrq8SvWuNWG2DP64bR.jpg",
     release_date: "2012-03-01",
+    backdrop_url: "/7bjSK3jQZf7lwEcwsux7Lso5eWi.jpg",
   },
   {
     id: 10,
@@ -68,6 +77,7 @@ module.exports = [
     tmdb_id: 597,
     poster_url: "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
     release_date: "1997-11-18",
+    backdrop_url: "/rzdPqYx7Um4FUZeD8wpXqjAUcEm.jpg",
   },
   {
     id: 11,
@@ -75,6 +85,7 @@ module.exports = [
     tmdb_id: 489,
     poster_url: "/bABCBKYBK7A5G1x0FzoeoNfuj2.jpg",
     release_date: "1997-12-05",
+    backdrop_url: "/bpV8wn48s82au37QyUJ51S7X2Vf.jpg",
   },
   {
     id: 12,
@@ -82,6 +93,7 @@ module.exports = [
     tmdb_id: 607,
     poster_url: "/uLOmOF5IzWoyrgIF5MfUnh5pa1X.jpg",
     release_date: "1997-07-02",
+    backdrop_url: "/1GJvBE7UWU1WOVi0XREl4JQc7f8.jpg",
   },
   {
     id: 13,
@@ -89,6 +101,7 @@ module.exports = [
     tmdb_id: 603,
     poster_url: "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
     release_date: "1999-03-30",
+    backdrop_url: "/giBJ0ezYNEobFBfB8H4JNTjmll.jpg",
   },
   {
     id: 14,
@@ -96,6 +109,7 @@ module.exports = [
     tmdb_id: 550,
     poster_url: "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
     release_date: "1999-10-15",
+    backdrop_url: "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
   },
   {
     id: 15,
@@ -103,6 +117,7 @@ module.exports = [
     tmdb_id: 564,
     poster_url: "/yhIsVvcUm7QxzLfT6HW2wLf5ajY.jpg",
     release_date: "1999-04-16",
+    backdrop_url: "/nCd8G7C5mbiABQuATgos1OeAshu.jpg",
   },
   {
     id: 16,
@@ -110,6 +125,7 @@ module.exports = [
     tmdb_id: 4951,
     poster_url: "/ujERk3aKABXU3NDXOAxEQYTHe9A.jpg",
     release_date: "1999-03-30",
+    backdrop_url: "/yvPbncYhMu9FfTjDhq0N5lgnVkO.jpg",
   },
   {
     id: 17,
@@ -117,6 +133,7 @@ module.exports = [
     tmdb_id: 509,
     poster_url: "/hHRIf2XHeQMbyRb3HUx19SF5Ujw.jpg",
     release_date: "1999-05-21",
+    backdrop_url: "/egyi9TQjLhNEQuEsK1dXovdHOHL.jpg",
   },
   {
     id: 18,
@@ -124,6 +141,7 @@ module.exports = [
     tmdb_id: 155,
     poster_url: "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     release_date: "2008-07-16",
+    backdrop_url: "/nMKdUUepR0i5zn0y1T4CsSB5chy.jpg",
   },
   {
     id: 19,
@@ -131,6 +149,7 @@ module.exports = [
     tmdb_id: 1726,
     poster_url: "/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
     release_date: "2008-04-30",
+    backdrop_url: "/cyecB7godJ6kNHGONFjUyVN9OX5.jpg",
   },
   {
     id: 20,
@@ -138,6 +157,7 @@ module.exports = [
     tmdb_id: 9502,
     poster_url: "/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg",
     release_date: "2008-06-04",
+    backdrop_url: "/d1RHScaZc7I8j0lDke1c4AxI435.jpg",
   },
   {
     id: 21,
@@ -145,6 +165,7 @@ module.exports = [
     tmdb_id: 8960,
     poster_url: "/7DyuV2G0hLEqHeueDfOqhZ2DVut.jpg",
     release_date: "2008-07-01",
+    backdrop_url: "/xh0ZRdnL4pSqfW73HBf97xiNEFP.jpg",
   },
   {
     id: 22,
@@ -152,6 +173,7 @@ module.exports = [
     tmdb_id: 157336,
     poster_url: "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
     release_date: "2014-11-05",
+    backdrop_url: "/5C3RriLKkIAQtQMx85JLtu4rVI2.jpg",
   },
   {
     id: 23,
@@ -159,6 +181,7 @@ module.exports = [
     tmdb_id: 198663,
     poster_url: "/ode14q7WtDugFDp78fo9lCsmay9.jpg",
     release_date: "2014-09-10",
+    backdrop_url: "/vHJlbhsXrZ5yrO2KqCbGSIU6fRX.jpg",
   },
   {
     id: 24,
@@ -166,6 +189,7 @@ module.exports = [
     tmdb_id: 244786,
     poster_url: "/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
     release_date: "2014-10-10",
+    backdrop_url: "/vNXGrknx4GjWLgmuNTftWZluIUl.jpg",
   },
   {
     id: 25,
@@ -173,6 +197,7 @@ module.exports = [
     tmdb_id: 27205,
     poster_url: "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
     release_date: "2010-07-15",
+    backdrop_url: "/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
   },
   {
     id: 26,
@@ -180,6 +205,7 @@ module.exports = [
     tmdb_id: 753342,
     poster_url: "/jE5o7y9K6pZtWNNMEw3IdpHuncR.jpg",
     release_date: "2023-11-22",
+    backdrop_url: "/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg",
   },
   {
     id: 27,
@@ -187,6 +213,7 @@ module.exports = [
     tmdb_id: 634649,
     poster_url: "/5weKu49pzJCt06OPpjvT80efnQj.jpg",
     release_date: "2021-12-15",
+    backdrop_url: "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
   },
   {
     id: 28,
@@ -194,6 +221,7 @@ module.exports = [
     tmdb_id: 346698,
     poster_url: "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
     release_date: "2023-07-19",
+    backdrop_url: "/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg",
   },
   {
     id: 29,
@@ -201,6 +229,7 @@ module.exports = [
     tmdb_id: 76600,
     poster_url: "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
     release_date: "2022-12-14",
+    backdrop_url: "/8rpDcsfLJypbO6vREc0547VKqEv.jpg",
   },
   {
     id: 30,
@@ -208,6 +237,7 @@ module.exports = [
     tmdb_id: 298618,
     poster_url: "/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
     release_date: "2023-06-13",
+    backdrop_url: "/yF1eOkaYvwiORauRCPWznV9xVvi.jpg",
   },
   {
     id: 31,
@@ -215,6 +245,7 @@ module.exports = [
     tmdb_id: 299536,
     poster_url: "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
     release_date: "2018-04-25",
+    backdrop_url: "/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
   },
   {
     id: 32,
@@ -222,6 +253,7 @@ module.exports = [
     tmdb_id: 447365,
     poster_url: "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
     release_date: "2023-05-03",
+    backdrop_url: "/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg",
   },
   {
     id: 33,
@@ -229,6 +261,7 @@ module.exports = [
     tmdb_id: 278,
     poster_url: "/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     release_date: "1994-09-23",
+    backdrop_url: "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
   },
   {
     id: 34,
@@ -236,6 +269,7 @@ module.exports = [
     tmdb_id: 671,
     poster_url: "/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
     release_date: "2001-11-16",
+    backdrop_url: "/hziiv14OpD73u9gAak4XDDfBKa2.jpg",
   },
   {
     id: 35,
@@ -243,6 +277,7 @@ module.exports = [
     tmdb_id: 436270,
     poster_url: "/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg",
     release_date: "2022-10-19",
+    backdrop_url: "/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
   },
   {
     id: 36,
@@ -250,6 +285,7 @@ module.exports = [
     tmdb_id: 361743,
     poster_url: "/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
     release_date: "2022-05-24",
+    backdrop_url: "/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg",
   },
   {
     id: 37,
@@ -257,6 +293,7 @@ module.exports = [
     tmdb_id: 672,
     poster_url: "/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
     release_date: "2002-11-13",
+    backdrop_url: "/1stUIsjawROZxjiCMtqqXqgfZWC.jpg",
   },
   {
     id: 38,
@@ -264,6 +301,7 @@ module.exports = [
     tmdb_id: 65754,
     poster_url: "/zqDopwg7XQ4IfFX2dRlQCT1SwMG.jpg",
     release_date: "2011-12-14",
+    backdrop_url: "/7Rk0eX4bpis4EeumxcxdH9FuYs8.jpg",
   },
   {
     id: 39,
@@ -271,6 +309,7 @@ module.exports = [
     tmdb_id: 615656,
     poster_url: "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg",
     release_date: "2023-08-02",
+    backdrop_url: "/5mzr6JZbrqnqD8rCEvPhuCE5Fw2.jpg",
   },
   {
     id: 40,
@@ -278,6 +317,7 @@ module.exports = [
     tmdb_id: 85350,
     poster_url: "/2BvtvDUyxiMJ4dmKfiQf4qdOHQN.jpg",
     release_date: "2014-06-05",
+    backdrop_url: "/qRwkMMZhQRKM4uDaXpd2XbZZmkE.jpg",
   },
   {
     id: 41,
@@ -285,6 +325,7 @@ module.exports = [
     tmdb_id: 166426,
     poster_url: "/qwoGfcg6YUS55nUweKGujHE54Wy.jpg",
     release_date: "2017-05-23",
+    backdrop_url: "/7C921eWK06n12c1miRXnYoEu5Yv.jpg",
   },
   {
     id: 42,
@@ -292,6 +333,7 @@ module.exports = [
     tmdb_id: 127585,
     poster_url: "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
     release_date: "2014-05-15",
+    backdrop_url: "/6RZZNx2irPBou7JyFGwOIoioPYK.jpg",
   },
   {
     id: 43,
@@ -299,6 +341,7 @@ module.exports = [
     tmdb_id: 608,
     poster_url: "/enA22EPyzc2WQ1VVyY7zxresQQr.jpg",
     release_date: "2002-07-03",
+    backdrop_url: "/o1l6OCqA3pYDZHIc5L1s7CEzCMv.jpg",
   },
   {
     id: 44,
@@ -306,6 +349,7 @@ module.exports = [
     tmdb_id: 593643,
     poster_url: "/v31MsWhF9WFh7Qooq6xSBbmJxoG.jpg",
     release_date: "2022-11-17",
+    backdrop_url: "/mSyQoValhBsJdq3JNGXJww2Q5yL.jpg",
   },
   {
     id: 45,
@@ -313,6 +357,7 @@ module.exports = [
     tmdb_id: 36557,
     poster_url: "/lMrxYKKhd4lqRzwUHAy5gcx9PSO.jpg",
     release_date: "2006-11-14",
+    backdrop_url: "/kjC48HRQpojr3FHx5pZF7Ro9xFg.jpg",
   },
   {
     id: 46,
@@ -320,6 +365,7 @@ module.exports = [
     tmdb_id: 10764,
     poster_url: "/e3DXXLJHGqMx9yYpXsql1XNljmM.jpg",
     release_date: "2008-10-29",
+    backdrop_url: "/3CqMIX3ZlrD0pU3fpBL6DM0Cneb.jpg",
   },
   {
     id: 47,
@@ -327,6 +373,7 @@ module.exports = [
     tmdb_id: 370172,
     poster_url: "/iUgygt3fscRoKWCV1d0C7FbM9TP.jpg",
     release_date: "2021-09-29",
+    backdrop_url: "/r2GAjd4rNOHJh6i6Y0FntmYuPQW.jpg",
   },
   {
     id: 48,
@@ -334,6 +381,7 @@ module.exports = [
     tmdb_id: 466272,
     poster_url: "/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg",
     release_date: "2019-07-24",
+    backdrop_url: "/oRiUKwDpcqDdoLwPoA4FIRh3hqY.jpg",
   },
   {
     id: 49,
@@ -341,6 +389,7 @@ module.exports = [
     tmdb_id: 96721,
     poster_url: "/5akKFgS7eeXUw9rKTEujryKrH17.jpg",
     release_date: "2013-09-02",
+    backdrop_url: "/caKZWDGmv5iW2U99skHs75MmOmU.jpg",
   },
   {
     id: 50,
@@ -348,6 +397,7 @@ module.exports = [
     tmdb_id: 884605,
     poster_url: "/gD72DhJ7NbfxvtxGiAzLaa0xaoj.jpg",
     release_date: "2023-06-15",
+    backdrop_url: "/rRcNmiH55Tz0ugUsDUGmj8Bsa4V.jpg",
   },
   {
     id: 51,
@@ -355,6 +405,7 @@ module.exports = [
     tmdb_id: 9870,
     poster_url: "/d4elOzyhNWVlxpG7BwigrumkFTe.jpg",
     release_date: "2008-04-17",
+    backdrop_url: "/s39aQY3dK1s6ARrUKP5yeq824nR.jpg",
   },
   {
     id: 52,
@@ -362,6 +413,7 @@ module.exports = [
     tmdb_id: 18240,
     poster_url: "/aEqtJDj8MvSDQwzggvcOfFTZMw.jpg",
     release_date: "2009-06-01",
+    backdrop_url: "/ojgXOhVi9Yk8irDpRfDkIzdD1LK.jpg",
   },
   {
     id: 53,
@@ -369,6 +421,7 @@ module.exports = [
     tmdb_id: 50646,
     poster_url: "/p4RafgAPk558muOjnBMHhMArjS2.jpg",
     release_date: "2011-07-29",
+    backdrop_url: "/vTwNAu8C4SkYvPp73rFAmLvXVym.jpg",
   },
   {
     id: 54,
@@ -376,6 +429,7 @@ module.exports = [
     tmdb_id: 122906,
     poster_url: "/iR1bVfURbN7r1C46WHFbwCkVve.jpg",
     release_date: "2013-09-04",
+    backdrop_url: "/5ZoFGrFCKP0QrcfVwOIHiAwunBg.jpg",
   },
   {
     id: 55,
@@ -383,6 +437,7 @@ module.exports = [
     tmdb_id: 200727,
     poster_url: "/rpD0t7DhzJVadnzgxSYrqljQTL2.jpg",
     release_date: "2014-10-16",
+    backdrop_url: "/txDX7lBx8bBhF7dRCEfDYmAmdnk.jpg",
   },
   {
     id: 56,
@@ -390,6 +445,7 @@ module.exports = [
     tmdb_id: 9919,
     poster_url: "/2dlftyPz7mTYbrsPvTogyFmYd7d.jpg",
     release_date: "2003-02-07",
+    backdrop_url: "/cdYj6HFpKp5NTmLiHHbNEGSmDT4.jpg",
   },
   {
     id: 57,
@@ -397,6 +453,7 @@ module.exports = [
     tmdb_id: 11036,
     poster_url: "/rNzQyW4f8B8cQeg7Dgj3n6eT5k9.jpg",
     release_date: "2004-06-25",
+    backdrop_url: "/qom1SZSENdmHFNZBXbtJAU0WTlC.jpg",
   },
   {
     id: 58,
@@ -404,6 +461,7 @@ module.exports = [
     tmdb_id: 951491,
     poster_url: "/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
     release_date: "2023-09-26",
+    backdrop_url: "/dZbLqRjjiiNCpTYzhzL2NMvz4J0.jpg",
   },
   {
     id: 59,
@@ -411,6 +469,7 @@ module.exports = [
     tmdb_id: 1118595,
     poster_url: "/lQchkNOo6iYSt73GWIxRP151JnY.jpg",
     release_date: "2023-09-20",
+    backdrop_url: "/ipVCoRWrrw2Xuupo6UQ2bOOZHmi.jpg",
   },
   {
     id: 60,
@@ -418,6 +477,7 @@ module.exports = [
     tmdb_id: 2667,
     poster_url: "/9050VGrYjYrEjpOvDZVAngLbg1f.jpg",
     release_date: "1999-07-14",
+    backdrop_url: "/hSLJKdgzRRvVTOHTwr1qafHpw4n.jpg",
   },
   {
     id: 61,
@@ -425,6 +485,7 @@ module.exports = [
     tmdb_id: 1008042,
     poster_url: "/kdPMUMJzyYAc4roD52qavX0nLIC.jpg",
     release_date: "2023-07-26",
+    backdrop_url: "/iIvQnZyzgx9TkbrOgcXx0p7aLiq.jpg",
   },
   {
     id: 62,
@@ -432,6 +493,7 @@ module.exports = [
     tmdb_id: 882598,
     poster_url: "/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg",
     release_date: "2022-09-23",
+    backdrop_url: "/kMZIMqEXO5MFd5Y1Ha2jZZF4pvF.jpg",
   },
   {
     id: 63,
@@ -439,6 +501,7 @@ module.exports = [
     tmdb_id: 493922,
     poster_url: "/p9fmuz2Oj3HtEJEqbIwkFGUhVXD.jpg",
     release_date: "2018-06-07",
+    backdrop_url: "/4DUoPZOHdPuROP4nyEIsPaMIiQl.jpg",
   },
   {
     id: 64,
@@ -446,6 +509,7 @@ module.exports = [
     tmdb_id: 530385,
     poster_url: "/7LEI8ulZzO5gy9Ww2NVCrKmHeDZ.jpg",
     release_date: "2019-07-03",
+    backdrop_url: "/aAM3cQmYGjjLQ24m0F0RWfjKQ57.jpg",
   },
   {
     id: 65,
@@ -453,6 +517,7 @@ module.exports = [
     tmdb_id: 1359,
     poster_url: "/9uGHEgsiUXjCNq8wdq4r49YL8A1.jpg",
     release_date: "2000-04-13",
+    backdrop_url: "/bneUTWFAcVCdsb0O5UwZbJd8xqZ.jpg",
   },
   {
     id: 66,
@@ -460,6 +525,7 @@ module.exports = [
     tmdb_id: 28,
     poster_url: "/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
     release_date: "1979-08-15",
+    backdrop_url: "/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg",
   },
   {
     id: 67,
@@ -467,6 +533,7 @@ module.exports = [
     tmdb_id: 339397,
     poster_url: "/q9fohCRpQ7m8OTyi82fxa3B86te.jpg",
     release_date: "2016-05-11",
+    backdrop_url: "/p0pqnu9URsFzYwo55QbS3bfAamU.jpg",
   },
   {
     id: 68,
@@ -474,6 +541,7 @@ module.exports = [
     tmdb_id: 59436,
     poster_url: "/4wBG5kbfagTQclETblPRRGihk0I.jpg",
     release_date: "2011-05-11",
+    backdrop_url: "/b5bcKhvN6VP82U5ztNdPfOLiolD.jpg",
   },
   {
     id: 69,
@@ -481,6 +549,7 @@ module.exports = [
     tmdb_id: 475303,
     poster_url: "/z4A6mFOLTMZAhCSPRyrtzG0SPbd.jpg",
     release_date: "2019-07-26",
+    backdrop_url: "/3C6hamStn5HHTNmGmXmmGKHFWhT.jpg",
   },
   {
     id: 70,
@@ -488,6 +557,7 @@ module.exports = [
     tmdb_id: 160588,
     poster_url: "/zLdLiUJfueZBctdv8OvkmGXEHEC.jpg",
     release_date: "2013-08-01",
+    backdrop_url: "/q7sl4qm8WlogrZ3cJxzuN8WejM1.jpg",
   },
   {
     id: 71,
@@ -495,6 +565,7 @@ module.exports = [
     tmdb_id: 238,
     poster_url: "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
     release_date: "1972-03-14",
+    backdrop_url: "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
   },
   {
     id: 72,
@@ -502,6 +573,7 @@ module.exports = [
     tmdb_id: 680,
     poster_url: "/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
     release_date: "1994-09-10",
+    backdrop_url: "/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
   },
   {
     id: 73,
@@ -509,6 +581,7 @@ module.exports = [
     tmdb_id: 13,
     poster_url: "/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
     release_date: "1994-06-23",
+    backdrop_url: "/qdIMHd4sEfJSckfVJfKQvisL02a.jpg",
   },
   {
     id: 74,
@@ -516,6 +589,7 @@ module.exports = [
     tmdb_id: 496243,
     poster_url: "/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
     release_date: "2019-05-30",
+    backdrop_url: "/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
   },
   {
     id: 75,
@@ -523,6 +597,7 @@ module.exports = [
     tmdb_id: 8587,
     poster_url: "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
     release_date: "1994-06-24",
+    backdrop_url: "/wXsQvli6tWqja51pYxXNG1LFIGV.jpg",
   },
   {
     id: 76,
@@ -530,6 +605,7 @@ module.exports = [
     tmdb_id: 10681,
     poster_url: "/hbhFnRzzg6ZDmm8YAmxBnQpQIPh.jpg",
     release_date: "2008-06-22",
+    backdrop_url: "/fK5ssgvtI43z19FoWigdlqgpLRE.jpg",
   },
   {
     id: 77,
@@ -537,6 +613,7 @@ module.exports = [
     tmdb_id: 106646,
     poster_url: "/34m2tygAYBGqA9MXKhRDtzYd4MR.jpg",
     release_date: "2013-12-25",
+    backdrop_url: "/2P0toWq3feNvFAzf28j7vNc1IuZ.jpg",
   },
   {
     id: 78,
@@ -544,6 +621,7 @@ module.exports = [
     tmdb_id: 311324,
     poster_url: "/p70dq1YxabemdZDm5K6Q8G10wSn.jpg",
     release_date: "2016-12-16",
+    backdrop_url: "/jmg9qYhzPZdYuNaOZr5xrQPK6cQ.jpg",
   },
   {
     id: 79,
@@ -551,6 +629,7 @@ module.exports = [
     tmdb_id: 533,
     poster_url: "/hKwtMF4LdEl9sozLCr8Ur4l499p.jpg",
     release_date: "2005-09-04",
+    backdrop_url: "/lDc57OEx1u1aNpOmHFjWbpT99kl.jpg",
   },
   {
     id: 80,
@@ -558,6 +637,7 @@ module.exports = [
     tmdb_id: 84892,
     poster_url: "/aKCvdFFF5n80P2VdS7d8YBwbCjh.jpg",
     release_date: "2012-09-20",
+    backdrop_url: "/qb6WoLJ9YtfhV7pgsTfUDlRYaCH.jpg",
   },
   {
     id: 81,
@@ -565,6 +645,7 @@ module.exports = [
     tmdb_id: 10673,
     poster_url: "/2tQYq9ntzn2dEwDIGLBSipYPenv.jpg",
     release_date: "1987-12-10",
+    backdrop_url: "/gNjBBkoBHwvKJijC2ThACzTPzmS.jpg",
   },
   {
     id: 82,
@@ -572,6 +653,7 @@ module.exports = [
     tmdb_id: 9806,
     poster_url: "/2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg",
     release_date: "2004-10-27",
+    backdrop_url: "/se5Hxz7PArQZOG3Nx2bpfOhLhtV.jpg",
   },
   {
     id: 83,
@@ -579,6 +661,7 @@ module.exports = [
     tmdb_id: 260513,
     poster_url: "/9lFKBtaVIhP7E2Pk0IY1CwTKTMZ.jpg",
     release_date: "2018-06-14",
+    backdrop_url: "/mabuNsGJgRuCTuGqjFkWe1xdu19.jpg",
   },
   {
     id: 84,
@@ -586,6 +669,7 @@ module.exports = [
     tmdb_id: 38575,
     poster_url: "/bHjLC5GuBfeyW6ZE07x6TalKj19.jpg",
     release_date: "2010-06-10",
+    backdrop_url: "/9Cip74Gl1xOkRP0e4OAiPZp8C4k.jpg",
   },
   {
     id: 85,
@@ -593,6 +677,7 @@ module.exports = [
     tmdb_id: 1885,
     poster_url: "/1mp4ViklKvA0WXXsNvNx0RBuiit.jpg",
     release_date: "1984-06-22",
+    backdrop_url: "/5iMAyVYs4rnQKQ9HDdmuqlb0VtS.jpg",
   },
   {
     id: 86,
@@ -600,6 +685,7 @@ module.exports = [
     tmdb_id: 10191,
     poster_url: "/ygGmAO60t8GyqUo9xYeYxSZAR3b.jpg",
     release_date: "2010-03-18",
+    backdrop_url: "/aH9KWmXFMamXkHMgLjnQmSYjScL.jpg",
   },
   {
     id: 87,
@@ -607,6 +693,7 @@ module.exports = [
     tmdb_id: 82702,
     poster_url: "/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg",
     release_date: "2014-06-05",
+    backdrop_url: "/8AAuJtCzaibYkbE0QVHc8EBsELB.jpg",
   },
   {
     id: 88,
@@ -614,6 +701,7 @@ module.exports = [
     tmdb_id: 1593,
     poster_url: "/uY9k8t2FQkMj60obnAnsPKLxHCE.jpg",
     release_date: "2006-12-20",
+    backdrop_url: "/rwcPe582tfTSVLwQzbO25InW3Hi.jpg",
   },
   {
     id: 89,
@@ -621,6 +709,7 @@ module.exports = [
     tmdb_id: 68718,
     poster_url: "/7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",
     release_date: "2012-12-25",
+    backdrop_url: "/5Lbm0gpFDRAPIV1Cth6ln9iL1ou.jpg",
   },
   {
     id: 90,
@@ -628,6 +717,7 @@ module.exports = [
     tmdb_id: 16869,
     poster_url: "/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg",
     release_date: "2009-08-19",
+    backdrop_url: "/1Jpkm9qZcsT0mSyVXgs4VlGjPNI.jpg",
   },
   {
     id: 91,
@@ -635,6 +725,7 @@ module.exports = [
     tmdb_id: 627,
     poster_url: "/bhY62Dw8iW54DIhxPQerbuB9DOP.jpg",
     release_date: "1996-02-23",
+    backdrop_url: "/cdbjlFEW1slS3QHMQ2e1g6zgw7N.jpg",
   },
   {
     id: 92,
@@ -642,6 +733,7 @@ module.exports = [
     tmdb_id: 49026,
     poster_url: "/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
     release_date: "2012-07-17",
+    backdrop_url: "/c3OHQncTAnKFhdOTX7D3LTW6son.jpg",
   },
   {
     id: 93,
@@ -649,6 +741,7 @@ module.exports = [
     tmdb_id: 475557,
     poster_url: "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
     release_date: "2019-10-01",
+    backdrop_url: "/r0kZNywAeN6Ar75rxDqLlTP5RiJ.jpg",
   },
   {
     id: 94,
@@ -656,6 +749,7 @@ module.exports = [
     tmdb_id: 500,
     poster_url: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
     release_date: "1992-09-02",
+    backdrop_url: "/jqFjgNnxpXIXWuPsyfqmcLXRo9p.jpg",
   },
   {
     id: 95,
@@ -663,6 +757,7 @@ module.exports = [
     tmdb_id: 185,
     poster_url: "/4sHeTAp65WrSSuc05nRBKddhBxO.jpg",
     release_date: "1971-12-19",
+    backdrop_url: "/yIonSXf1jdNihhK8PssxO6KCIfz.jpg",
   },
   {
     id: 96,
@@ -670,6 +765,7 @@ module.exports = [
     tmdb_id: 281957,
     poster_url: "/ji3ecJphATlVgWNY0B0RVXZizdf.jpg",
     release_date: "2015-12-25",
+    backdrop_url: "/mFreKKBNnB2v678aDq0IZ2jaD8K.jpg",
   },
   {
     id: 97,
@@ -677,6 +773,7 @@ module.exports = [
     tmdb_id: 744,
     poster_url: "/xUuHj3CgmZQ9P2cMaqQs4J0d4Zc.jpg",
     release_date: "1986-05-16",
+    backdrop_url: "/jILeJ60zPpIjjJHGSmIeY4eO30t.jpg",
   },
   {
     id: 98,
@@ -684,6 +781,7 @@ module.exports = [
     tmdb_id: 98,
     poster_url: "/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
     release_date: "2000-05-04",
+    backdrop_url: "/7PBXKqTDCsSZb3GATn94DfXoAGx.jpg",
   },
   {
     id: 99,
@@ -691,6 +789,7 @@ module.exports = [
     tmdb_id: 530915,
     poster_url: "/iZf0KyrE25z1sage4SYFLCCrMi9.jpg",
     release_date: "2019-12-25",
+    backdrop_url: "/2WgieNR1tGHlpJUsolbVzbUbE1O.jpg",
   },
   {
     id: 100,
@@ -698,6 +797,7 @@ module.exports = [
     tmdb_id: 508,
     poster_url: "/7QPeVsr9rcFU9Gl90yg0gTOTpVv.jpg",
     release_date: "2003-09-07",
+    backdrop_url: "/xUWf5xX0AnZgAnYXAMk03zTbsef.jpg",
   },
   {
     id: 101,
@@ -705,6 +805,7 @@ module.exports = [
     tmdb_id: 8363,
     poster_url: "/ek8e8txUyUwd2BNqj6lFEerJfbq.jpg",
     release_date: "2007-03-20",
+    backdrop_url: "/giYuvpmpZbwkT3NtX4WdNYqGhxw.jpg",
   },
   {
     id: 102,
@@ -712,6 +813,7 @@ module.exports = [
     tmdb_id: 72105,
     poster_url: "/1QVZXQQHCEIj8lyUhdBYd2qOYtq.jpg",
     release_date: "2012-06-29",
+    backdrop_url: "/wS9TiAS1WckeTS2IrFg5dRN9WQD.jpg",
   },
   {
     id: 103,
@@ -719,6 +821,7 @@ module.exports = [
     tmdb_id: 8699,
     poster_url: "/Rdzsh3s6waplhSD7PUaBJovB7v.jpg",
     release_date: "2004-06-28",
+    backdrop_url: "/5iHPV6M6aPKxXv3w8LTxsD6Zeot.jpg",
   },
   {
     id: 104,
@@ -726,6 +829,7 @@ module.exports = [
     tmdb_id: 12133,
     poster_url: "/tY2FpgzPVx92JrYveWt4bn3cMyD.jpg",
     release_date: "2008-07-25",
+    backdrop_url: "/247H2jS9Te9TTmKDcAMg3LN5gmI.jpg",
   },
   {
     id: 105,
@@ -733,6 +837,7 @@ module.exports = [
     tmdb_id: 50544,
     poster_url: "/q4ZAmIIbe2LiLvhQT0q3e6pleYr.jpg",
     release_date: "2011-07-21",
+    backdrop_url: "/wD0TCyFkRkol7JkLmO7gp7oZkib.jpg",
   },
   {
     id: 106,
@@ -740,6 +845,7 @@ module.exports = [
     tmdb_id: 583,
     poster_url: "/lSSA64WF0M0BXnjwr2quMh6shCl.jpg",
     release_date: "1979-08-17",
+    backdrop_url: "/bSkJttePygyoEzUlKqKbpIokmJC.jpg",
   },
   {
     id: 107,
@@ -747,6 +853,7 @@ module.exports = [
     tmdb_id: 762,
     poster_url: "/hWx1ANiWEWWyzKPN0us35HCGnhQ.jpg",
     release_date: "1975-05-25",
+    backdrop_url: "/1KgXxv6tHXOnakqYvMPvFwYKWiw.jpg",
   },
   {
     id: 108,
@@ -754,6 +861,7 @@ module.exports = [
     tmdb_id: 17610,
     poster_url: "/qF573jdJYwtCbXVXPDn4xu8nW2a.jpg",
     release_date: "2009-06-18",
+    backdrop_url: "/21RU5YYiLk3UVF9lRhf2fs1tRUK.jpg",
   },
   {
     id: 109,
@@ -761,6 +869,7 @@ module.exports = [
     tmdb_id: 9486,
     poster_url: "/lx3Y7teA6DaoQ6cIhwzrlnDZpFW.jpg",
     release_date: "2003-03-14",
+    backdrop_url: "/gtDuUEprJkTIrzcO2vFsXgdkJ0R.jpg",
   },
   {
     id: 110,
@@ -768,6 +877,7 @@ module.exports = [
     tmdb_id: 1268,
     poster_url: "/zbAlwsJNxfo4VfTy9peDo7itJ0I.jpg",
     release_date: "2007-03-22",
+    backdrop_url: "/pJ1jm5sJbcQC731JYF06rDAkZEZ.jpg",
   },
   {
     id: 111,
@@ -775,6 +885,7 @@ module.exports = [
     tmdb_id: 32823,
     poster_url: "/6g0li87w8LIK77QRUtOkQkM6bD7.jpg",
     release_date: "2010-06-03",
+    backdrop_url: "/99XKAb7zFAKDogB0DYl87bA9Hi1.jpg",
   },
   {
     id: 112,
@@ -782,6 +893,7 @@ module.exports = [
     tmdb_id: 6471,
     poster_url: "/7uPt2OmkPmHLl3yz9CzZuWpNiOg.jpg",
     release_date: "1979-12-14",
+    backdrop_url: "/llVPUs3j9RywSMstGRepSeS8vSL.jpg",
   },
   {
     id: 113,
@@ -789,6 +901,7 @@ module.exports = [
     tmdb_id: 242582,
     poster_url: "/j9HrX8f7GbZQm1BrBiR40uFQZSb.jpg",
     release_date: "2014-10-23",
+    backdrop_url: "/wofhl2lsTYCPmMQPsbj6iu9n0P6.jpg",
   },
   {
     id: 114,
@@ -796,6 +909,7 @@ module.exports = [
     tmdb_id: 103,
     poster_url: "/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
     release_date: "1976-02-09",
+    backdrop_url: "/6aoyUbvu0419XLKLIMoH0TkEicH.jpg",
   },
   {
     id: 115,
@@ -803,5 +917,6 @@ module.exports = [
     tmdb_id: 274,
     poster_url: "/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
     release_date: "1991-02-14",
+    backdrop_url: "/mfwq2nMBzArzQ7Y9RKE8SKeeTkg.jpg",
   },
 ];
