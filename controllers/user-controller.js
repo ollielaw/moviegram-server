@@ -204,6 +204,44 @@ const update = async (req, res) => {
   }
 };
 
+const fetchConversations = async (req, res) => {
+  const { id } = req.decoded;
+  try {
+    const conversations = await knex
+      .select("c.*", "s.created_at")
+      .from({ s: "shares" })
+      .join(
+        knex
+          .select(
+            { conversation_id: "u.id" },
+            "u.name",
+            "u.username",
+            "u.avatar_url"
+          )
+          .max({ order_key: "s.id" })
+          .from({ s: "shares" })
+          .join(knex("users").whereNot({ id }).as("u"), function () {
+            this.on("s.sender_id", "=", "u.id").orOn(
+              "s.sendee_id",
+              "=",
+              "u.id"
+            );
+          })
+          .groupBy("u.id")
+          .as("c"),
+        "s.id",
+        "=",
+        "c.order_key"
+      )
+      .orderBy("c.order_key", "desc");
+    return res.status(200).json(conversations);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error fetching user's conversations: ${error}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   fetchProfilePosts,
@@ -211,4 +249,5 @@ module.exports = {
   findOnePost,
   fetchFavorites,
   update,
+  fetchConversations,
 };

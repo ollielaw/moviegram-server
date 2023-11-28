@@ -3,11 +3,13 @@ const postsData = require("../seed-data/posts");
 const moviesData = require("../seed-data/movies");
 const commentsData = require("../seed-data/comments");
 const likesData = require("../seed-data/likes");
+const sharesData = require("../seed-data/shares");
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
+  await knex("shares").del();
   await knex("likes").del();
   await knex("comments").del();
   await knex("posts").del();
@@ -18,4 +20,5 @@ exports.seed = async function (knex) {
   await knex("posts").insert(postsData);
   await knex("comments").insert(commentsData);
   await knex("likes").insert(likesData);
+  await knex("shares").insert(sharesData);
 };
