@@ -242,6 +242,51 @@ const fetchConversations = async (req, res) => {
   }
 };
 
+const findOneConversation = async (req, res) => {
+  const { id } = req.decoded;
+  const { userId } = req.params;
+  try {
+    const conversation = await knex
+      .select("c.*", "u.name", "u.username", "u.avatar_url")
+      .from({ u: "users" })
+      .join(
+        knex
+          .select(
+            "s.*",
+            "m.movie_name",
+            "m.tmdb_id",
+            "m.poster_url",
+            "m.backdrop_url",
+            "m.release_date"
+          )
+          .from({ m: "movies" })
+          .join(
+            knex("shares")
+              .where(function () {
+                this.where({ sender_id: id }).andWhere({ sendee_id: userId });
+              })
+              .orWhere(function () {
+                this.where({ sender_id: userId }).andWhere({ sendee_id: id });
+              })
+              .as("s"),
+            "m.id",
+            "=",
+            "s.movie_id"
+          )
+          .as("c"),
+        "u.id",
+        "=",
+        "c.sender_id"
+      )
+      .orderBy("c.id", "desc");
+    return res.status(200).json(conversation);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error fetching conversation with user ${userId}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   fetchProfilePosts,
@@ -250,4 +295,5 @@ module.exports = {
   fetchFavorites,
   update,
   fetchConversations,
+  findOneConversation,
 };

@@ -5,7 +5,12 @@
 exports.up = function (knex) {
   return knex.schema.createTable("shares", (table) => {
     table.increments("id").primary();
-    table.integer("tmdb_id").unsigned().notNullable();
+    table
+      .integer("movie_id")
+      .unsigned()
+      .references("movies.id")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     table
       .integer("sender_id")
       .unsigned()
