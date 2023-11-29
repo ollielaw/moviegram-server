@@ -1,4 +1,6 @@
 const knex = require("knex")(require("../knexfile"));
+require("dotenv").config();
+const axios = require("axios");
 
 const index = async (req, res) => {
   const { id } = req.decoded;
@@ -287,6 +289,56 @@ const findOneConversation = async (req, res) => {
   }
 };
 
+const shareMovie = async (req, res) => {
+  const { id } = req.decoded;
+  const { userId } = req.params;
+  const { tmdb_id } = req.body;
+  try {
+    const moviesFound = await knex("movies").where({ tmdb_id });
+    if (!moviesFound.length) {
+      const { data } = await axios.get(
+        `${process.env.TMDB_API_URL}/movie/${tmdb_id}?language=en-US`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const newMovie = {
+        movie_name: data.title,
+        tmdb_id,
+        poster_url: data.poster_path,
+        backdrop_url: data.backdrop_path,
+        release_date: data.release_date,
+      };
+      await knex("movies").insert(newMovie);
+    }
+    const usersFound = await knex("users").where({ id: userId });
+    if (!usersFound.length) {
+      return res.status(404).json({
+        message: `Target user ${userId} not found`,
+      });
+    }
+    const newShare = {
+      movie_id: moviesFound[0].id,
+      sender_id: id,
+      sendee_id: userId,
+      has_seen: false,
+    };
+    const newShareIds = await knex("shares").insert(newShare);
+    const share_id = newShareIds[0];
+    const resShare = {
+      id: share_id,
+      ...newShare,
+    };
+    return res.status(201).json(resShare);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error sharing movie to user ${userId}: ${error}`,
+    });
+  }
+};
+
 module.exports = {
   index,
   fetchProfilePosts,
@@ -296,4 +348,5 @@ module.exports = {
   update,
   fetchConversations,
   findOneConversation,
+  shareMovie,
 };
