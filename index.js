@@ -28,16 +28,20 @@ app.use((req, res, next) => {
   if (req.url === "/api/register" || req.url === "/api/login") {
     next();
   } else {
-    const token = getToken(req);
-    if (token) {
-      if (jwt.verify(token, SECRET_KEY)) {
-        req.decoded = jwt.decode(token);
-        next();
+    try {
+      const token = getToken(req);
+      if (token) {
+        if (jwt.verify(token, SECRET_KEY)) {
+          req.decoded = jwt.decode(token);
+          next();
+        } else {
+          return res.status(403).json({ error: "Not Authorized." });
+        }
       } else {
-        res.status(403).json({ error: "Not Authorized." });
+        return res.status(403).json({ error: "No token. Unauthorized." });
       }
-    } else {
-      res.status(403).json({ error: "No token. Unauthorized." });
+    } catch (error) {
+      return res.status(500).json({ error: `${error}` });
     }
   }
 });

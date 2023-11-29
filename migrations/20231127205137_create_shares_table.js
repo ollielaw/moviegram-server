@@ -23,6 +23,7 @@ exports.up = function (knex) {
       .references("users.id")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
+    table.string("message", 2500);
     table.boolean("has_seen").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table

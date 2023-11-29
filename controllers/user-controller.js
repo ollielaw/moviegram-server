@@ -210,7 +210,7 @@ const fetchConversations = async (req, res) => {
   const { id } = req.decoded;
   try {
     const conversations = await knex
-      .select("c.*", "s.created_at")
+      .select("c.*", "s.created_at", { last_sender: "s.sender_id" })
       .from({ s: "shares" })
       .join(
         knex
@@ -262,7 +262,7 @@ const findOneConversation = async (req, res) => {
             "m.release_date"
           )
           .from({ m: "movies" })
-          .join(
+          .rightJoin(
             knex("shares")
               .where(function () {
                 this.where({ sender_id: id }).andWhere({ sendee_id: userId });
@@ -289,29 +289,51 @@ const findOneConversation = async (req, res) => {
   }
 };
 
-const shareMovie = async (req, res) => {
+const shareMessage = async (req, res) => {
   const { id } = req.decoded;
   const { userId } = req.params;
-  const { tmdb_id } = req.body;
+  const { tmdb_id, message } = req.body;
   try {
-    const moviesFound = await knex("movies").where({ tmdb_id });
-    if (!moviesFound.length) {
-      const { data } = await axios.get(
-        `${process.env.TMDB_API_URL}/movie/${tmdb_id}?language=en-US`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
-          },
-        }
-      );
-      const newMovie = {
-        movie_name: data.title,
-        tmdb_id,
-        poster_url: data.poster_path,
-        backdrop_url: data.backdrop_path,
-        release_date: data.release_date,
+    if (tmdb_id) {
+      const moviesFound = await knex("movies").where({ tmdb_id });
+      if (!moviesFound.length) {
+        const { data } = await axios.get(
+          `${process.env.TMDB_API_URL}/movie/${tmdb_id}?language=en-US`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
+            },
+          }
+        );
+        const newMovie = {
+          movie_name: data.title,
+          tmdb_id,
+          poster_url: data.poster_path,
+          backdrop_url: data.backdrop_path,
+          release_date: data.release_date,
+        };
+        await knex("movies").insert(newMovie);
+      }
+      const usersFound = await knex("users").where({ id: userId });
+      if (!usersFound.length) {
+        return res.status(404).json({
+          message: `Target user ${userId} not found`,
+        });
+      }
+      const newShare = {
+        movie_id: moviesFound[0].id,
+        sender_id: id,
+        sendee_id: userId,
+        message: "",
+        has_seen: false,
       };
-      await knex("movies").insert(newMovie);
+      const newShareIds = await knex("shares").insert(newShare);
+      const share_id = newShareIds[0];
+      const resShare = {
+        id: share_id,
+        ...newShare,
+      };
+      return res.status(201).json(resShare);
     }
     const usersFound = await knex("users").where({ id: userId });
     if (!usersFound.length) {
@@ -320,9 +342,9 @@ const shareMovie = async (req, res) => {
       });
     }
     const newShare = {
-      movie_id: moviesFound[0].id,
       sender_id: id,
       sendee_id: userId,
+      message,
       has_seen: false,
     };
     const newShareIds = await knex("shares").insert(newShare);
@@ -334,7 +356,7 @@ const shareMovie = async (req, res) => {
     return res.status(201).json(resShare);
   } catch (error) {
     return res.status(500).json({
-      message: `Error sharing movie to user ${userId}: ${error}`,
+      message: `Error sending message to user ${userId}: ${error}`,
     });
   }
 };
@@ -348,5 +370,5 @@ module.exports = {
   update,
   fetchConversations,
   findOneConversation,
-  shareMovie,
+  shareMessage,
 };

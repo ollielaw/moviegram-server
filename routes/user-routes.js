@@ -12,6 +12,6 @@ router.route("/conversations").get(userController.fetchConversations);
 router
   .route("/conversations/:userId")
   .get(userController.findOneConversation)
-  .post(userController.shareMovie);
+  .post(userController.shareMessage);
 
 module.exports = router;
