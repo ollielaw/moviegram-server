@@ -210,7 +210,12 @@ const fetchConversations = async (req, res) => {
   const { id } = req.decoded;
   try {
     const conversations = await knex
-      .select("c.*", "s.created_at", { last_sender: "s.sender_id" })
+      .select(
+        "c.*",
+        "s.created_at",
+        { last_sender: "s.sender_id" },
+        "s.has_seen"
+      )
       .from({ s: "shares" })
       .join(
         knex
@@ -280,7 +285,7 @@ const findOneConversation = async (req, res) => {
         "=",
         "c.sender_id"
       )
-      .orderBy("c.id", "desc");
+      .orderBy("c.id", "asc");
     return res.status(200).json(conversation);
   } catch (error) {
     return res.status(500).json({
@@ -349,14 +354,37 @@ const shareMessage = async (req, res) => {
     };
     const newShareIds = await knex("shares").insert(newShare);
     const share_id = newShareIds[0];
-    const resShare = {
-      id: share_id,
-      ...newShare,
-    };
+    const resShare = await knex("shares").where({ id: share_id }).first();
     return res.status(201).json(resShare);
   } catch (error) {
     return res.status(500).json({
       message: `Error sending message to user ${userId}: ${error}`,
+    });
+  }
+};
+
+const viewMessage = async (req, res) => {
+  const { messageId } = req.params;
+  try {
+    const messagesFound = await knex("shares").where({ id: messageId });
+    if (!messagesFound.length) {
+      return res.status(404).json({
+        message: `Message ${messageId} not found.`,
+      });
+    }
+    const updatedMsg = {
+      id: messagesFound[0].id,
+      movie_id: messagesFound[0].movie_id,
+      sender_id: messagesFound[0].sender_id,
+      sendee_id: messagesFound[0].sendee_id,
+      message: messagesFound[0].message,
+      has_seen: true,
+    };
+    await knex("shares").where({ id: messageId }).update(updatedMsg);
+    return res.status(200).json(updatedMsg);
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error updating message to viewed: ${error}`,
     });
   }
 };
@@ -371,4 +399,5 @@ module.exports = {
   fetchConversations,
   findOneConversation,
   shareMessage,
+  viewMessage,
 };

@@ -13,5 +13,8 @@ router
   .route("/conversations/:userId")
   .get(userController.findOneConversation)
   .post(userController.shareMessage);
+router
+  .route("/conversations/messages/:messageId")
+  .put(userController.viewMessage);
 
 module.exports = router;
