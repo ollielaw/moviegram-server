@@ -161,9 +161,9 @@ io.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     console.log(data);
-    socket.to(data.sendee_id).emit("message", {
+    socket.to(data.socketId).emit("message", {
       data,
-      from: socket.userId,
+      from: socket.socketId,
     });
   });
 
