@@ -214,6 +214,7 @@ const fetchConversations = async (req, res) => {
         "c.*",
         "s.created_at",
         { last_sender: "s.sender_id" },
+        "s.sendee_id",
         "s.has_seen"
       )
       .from({ s: "shares" })
@@ -234,6 +235,8 @@ const fetchConversations = async (req, res) => {
               "u.id"
             );
           })
+          .where({ sender_id: id })
+          .orWhere({ sendee_id: id })
           .groupBy("u.id")
           .as("c"),
         "s.id",
