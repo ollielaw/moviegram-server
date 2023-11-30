@@ -4,6 +4,12 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
+const PORT = process.env.PORT || 8080;
+const ORIGIN = process.env.CORS_ORIGIN;
+const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const userRoutes = require("./routes/user-routes");
 const movieRoutes = require("./routes/movie-routes");
@@ -11,12 +17,14 @@ const postRoutes = require("./routes/post-routes");
 const profileRoutes = require("./routes/profile-routes");
 
 const app = express();
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: ORIGIN,
+  },
+});
 
 app.use(express.json());
-
-const PORT = process.env.PORT || 8080;
-const ORIGIN = process.env.CORS_ORIGIN;
-const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 app.use(
   cors({
@@ -128,11 +136,52 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+io.use((socket, next) => {
+  const userId = socket.handshake.auth.userId;
+  socket.userId = userId;
+  next();
+});
+
+io.on("connection", (socket) => {
+  const users = [];
+  for (let [id, socket] of io.of("/").sockets) {
+    users.push({
+      socketId: id,
+      userId: socket.userId,
+    });
+  }
+  console.log(users);
+  socket.emit("users", users);
+  socket.broadcast.emit("user connected", {
+    socketId: socket.id,
+    userId: socket.userId,
+  });
+
+  socket.join(socket.userId);
+
+  socket.on("message", (data) => {
+    console.log(data);
+    socket.to(data.sendee_id).emit("message", {
+      data,
+      from: socket.userId,
+    });
+  });
+
+  socket.on("disconnect", async () => {
+    const matchingSockets = await io.in(socket.userId).allSockets();
+    const isDisconnected = matchingSockets.size === 0;
+    if (isDisconnected) {
+      // notify other users
+      socket.broadcast.emit("user disconnected", socket.userId);
+    }
+  });
+});
+
 app.use("/api/user", userRoutes);
 app.use("/api/movies", movieRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/profiles", profileRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
