@@ -150,20 +150,19 @@ io.on("connection", (socket) => {
       userId: socket.userId,
     });
   }
-  console.log(users);
+
   socket.emit("users", users);
   socket.broadcast.emit("user connected", {
     socketId: socket.id,
     userId: socket.userId,
   });
 
-  socket.join(socket.userId);
+  socket.join(socket.id);
 
-  socket.on("message", (data) => {
-    console.log(data);
+  socket.on("message", ({ data }) => {
     socket.to(data.socketId).emit("message", {
       data,
-      from: socket.socketId,
+      from: socket.id,
     });
   });
 
@@ -171,7 +170,6 @@ io.on("connection", (socket) => {
     const matchingSockets = await io.in(socket.userId).allSockets();
     const isDisconnected = matchingSockets.size === 0;
     if (isDisconnected) {
-      // notify other users
       socket.broadcast.emit("user disconnected", socket.userId);
     }
   });
